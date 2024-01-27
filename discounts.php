@@ -1,7 +1,8 @@
 <?php
 require_once("pdo-conncetion.php");
 
-$sql = "SELECT * FROM discount";
+$sql = "SELECT discount.*, COUNT(us_discount.us_id) AS usnum FROM discount
+JOIN us_discount ON discount.discount_id = us_discount.discount_id";
 $stmt = $db_host->prepare($sql);
 
 try {
@@ -166,11 +167,16 @@ try {
                                     <tr>
                                         <td><?=$row["discount_id"] ?></td>
                                         <td><?=$row["main"] ?></td>
-                                        <td>已使用<?=$row["usnum"] ?> /<br> 可使用<?=$row["num"] ?></td>
+                                        <td><?= $row["serial_number"] ?></td>
+                                        <td><?= $row["type"] ?></td>
+                                        <td><?= $row["amount"] ?></td>
+                                        <td>已使用<?= $row["usnum"] ?> /<br> 可使用 <?=$row["num"] ?></td>
+                                        <td><?= $row["low_consumption"] ?></td>
+                                        <td><?= $row["restriction"] ?></td>
                                         <td><?=$row["start_date"] ?></td>
                                         <td><?=$row["end_date"] ?></td>
-                                        <td><a href="discount.php?id<?=$row["discount_id"] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
-                                        <td><a href="doDeletediscount.php?id<?=$row["discount_id"] ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                        <td><a href="rediscount.php?id=<?=$row["discount_id"] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
+                                        <td><a href="doDeletediscount.php?id=<?=$row["discount_id"] ?>" class="btn btn-primary"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
