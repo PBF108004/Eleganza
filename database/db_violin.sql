@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-01-27 09:57:35
+-- 產生時間： 2024-01-27 11:54:22
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -142,15 +142,21 @@ CREATE TABLE `discount` (
   `discount_id` int(2) NOT NULL,
   `main` varchar(10) NOT NULL,
   `serial_number` varchar(15) NOT NULL,
-  `type` varchar(1) NOT NULL,
+  `type` varchar(3) NOT NULL,
   `amount` int(4) NOT NULL,
-  `percent` varchar(1) NOT NULL,
   `num` int(2) NOT NULL,
-  `low_consumption` int(6) NOT NULL,
-  `restriction` varchar(10) NOT NULL,
+  `low_consumption` int(6) DEFAULT NULL,
+  `restriction` varchar(10) DEFAULT NULL,
   `start_date` datetime NOT NULL,
   `end_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `discount`
+--
+
+INSERT INTO `discount` (`discount_id`, `main`, `serial_number`, `type`, `amount`, `num`, `low_consumption`, `restriction`, `start_date`, `end_date`) VALUES
+(1, '全館折扣', 'NEWOPEN100', '百分比', 50, 2, 0, '無限制', '2024-01-27 00:00:00', '2024-01-31 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -615,6 +621,13 @@ CREATE TABLE `us_discount` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- 傾印資料表的資料 `us_discount`
+--
+
+INSERT INTO `us_discount` (`us_id`, `user_id`, `discount_id`, `order_id`) VALUES
+(1, 1, 1, 2024010102);
+
+--
 -- 已傾印資料表的索引
 --
 
@@ -749,7 +762,7 @@ ALTER TABLE `course_like`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `discount_id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `discount_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `imgs`
@@ -803,7 +816,7 @@ ALTER TABLE `users`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `us_discount`
 --
 ALTER TABLE `us_discount`
-  MODIFY `us_id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `us_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 已傾印資料表的限制式
