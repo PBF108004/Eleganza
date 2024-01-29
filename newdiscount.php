@@ -10,6 +10,7 @@
     <title>新增折扣-Eleganza</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?= include("css/css.php") ?>
 </head>
 
 <body class="sb-nav-fixed">
@@ -120,54 +121,74 @@
                         <li class="breadcrumb-item active">新增折扣</li>
                     </ol>
                     <div class="card py-3 px-5">
-                        <form action="doAdddiscount.php" method="post">
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">優惠券活動名稱</label>
-                                <input class="col-2" type="text" for="form-control">
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">序號</label>
-                                <input class="col-2" type="text" for="form-control">
-                                <button type="button" class="col-2 btn btn-primary mx-3">隨機產生序號</button>
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">種類</label>
-                                <select class="col-2" name="" id="">
-                                    <option value="">請選擇折扣種類</option>
-                                    <option value="">金額</option>
-                                    <option value="">百分比</option>
-                                </select>
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">折扣</label>
-                                <input class="col-2" type="text" for="form-control">
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">優惠券數量</label>
-                                <input class="col-2" type="text" for="form-control">
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">最低消費限制</label>
-                                <input class="col-2" type="text" for="form-control">
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">併用限制</label>
-                                <input class="col-2" type="text" for="form-control">
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">開始時間</label>
-                                <input class="col-2" type="datetime" for="form-control">
-                            </div>
-                            <div class="mb-2 row">
-                                <label class="col-2" for="form-label">結束時間</label>
-                                <input class="col-2" type="datetime" for="form-control">
-                            </div>
-                            <div>
-                                <button class="px-4 btn btn-primary">取消</button>
-                                <button type="submit" class="px-4 btn btn-primary">新增優惠券</button>
-                            </div>
-
-                        </form>
+                        <table class="table table-width">
+                            <tr>
+                                <th><label for="form-label">優惠券活動名稱</label></th>
+                                <td><input type="text" for="form-control" id="main"></td>
+                            </tr>
+                            <tr>
+                                <th><label for="form-label">序號</label></th>
+                                <td><input type="text" for="form-control" id="serial_number">
+                                    <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary mx-3">隨機序號</button>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card card-body my-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="mx-3">序號開頭</div>
+                                                <div><input type="text" id="number" class="nmuber"></div>
+                                                <div class="mx-3">序號長度</div>
+                                                <div><select name="" id="no">
+                                                        <option value="8">8</option>
+                                                        <option value="10" selected>10</option>
+                                                        <option value="15">15</option>
+                                                    </select></div>
+                                                <button class="btn btn-primary mx-3" id="random">隨機產生</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><label for="form-label">種類</label></th>
+                                <td><select id="type">
+                                        <option value="0" selected disabled></option>
+                                        <option value="金額">金額</option>
+                                        <option value="百分比">百分比</option>
+                                    </select></td>
+                            </tr>
+                            <tr>
+                                <th><label for="form-label">折扣</label></th>
+                                <td><input type="text" for="form-control" id="amount"></td>
+                            </tr>
+                            <tr>
+                                <th><label for="form-label">優惠券數量</label></th>
+                                <td><input type="text" for="form-control" id="num">
+                            </tr>
+                            </td>
+                            <tr>
+                                <th><label for="form-label">最低消費限制</label></th>
+                                <td><input type="text" for="form-control" id="low_consumption"></td>
+                            </tr>
+                            <tr>
+                                <th><label for="form-label">併用限制</label></th>
+                                <td><input type="text" for="form-control" id="restriction"></td>
+                            </tr>
+                            <tr>
+                                <th>開始時間</th>
+                                <td><input for="form-control" id="start_date" type="date" value="<?= $start_date ?>">
+                                    <input type="time" for="form-contorl" id="start_time" type="time">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>結束時間</th>
+                                <td><input for="form-control" id="end_date" type="date">
+                                    <input type="time" for="form-contorl" id="end_time" type="time">
+                                </td>
+                            </tr>
+                        </table>
+                        <div>
+                            <a href="discounts.php" class="mx-3 btn btn-primary">取消</a>
+                            <button type="button" id="send" class="btn btn-primary">新增優惠券</button>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -185,8 +206,89 @@
             </footer>
         </div>
     </div>
+    <script>
+        const main = document.querySelector("#main"),
+            serial_number = document.querySelector("#serial_number"),
+            type = document.querySelector("#type"),
+            amount = document.querySelector("#amount"),
+            num = document.querySelector("#num"),
+            low_consumption = document.querySelector("#low_consumption"),
+            restriction = document.querySelector("#restriction"),
+            start_date = document.querySelector("#start_date"),
+            start_time = document.querySelector("#start_time"),
+            end_date = document.querySelector("#end_date"),
+            end_time = document.querySelector("#end_time");
+        const send = document.querySelector("#send");
+        const random = document.querySelector("#random");
+        const no = document.querySelector("#no"),
+            number = document.querySelector("#number");
+
+        send.addEventListener("click", function() {
+            mainVal = main.value;
+            serial_numberVal = serial_number.value;
+            typeVal = type.value;
+            amountVal = amount.value;
+            numVal = num.value;
+            low_consumptionVal = low_consumption.value;
+            restrictionVal = restriction.value;
+            start_dateVal = start_date.value;
+            start_timeVal = start_time.value;
+            end_dateVal = end_date.value;
+            end_timeVal = end_time.value;
+
+            $.ajax({
+                    method: "POST", //or GET
+                    url: "doAdddiscount.php",
+                    dataType: "json",
+                    data: {
+                        main: mainVal,
+                        serial_number: serial_numberVal,
+                        type: typeVal,
+                        amount: amountVal,
+                        num: numVal,
+                        low_consumption: low_consumptionVal,
+                        restriction: restrictionVal,
+                        start_date: start_dateVal,
+                        start_time: start_timeVal,
+                        end_date: end_dateVal,
+                        end_time: end_timeVal
+                    } //如果需要
+                })
+                .done(function(response) {
+                    if (response.status == 0) {
+                        alert(response.message);
+                        return;
+                    }
+                    alert("新增折扣" + mainVal + "成功!");
+
+                }).fail(function(jqXHR, textStatus) {
+                    console.log("Request failed: " + textStatus);
+                });
+        })
+
+        random.addEventListener("click", function() {
+            let data = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+            let str = "";
+            let l_number = number.value.length;
+            let n = 0;
+            if (l_number == 0)
+                n = no.value;
+            else {
+                n = no.value - l_number;
+                str += number.value;
+            }
+
+            // console.log(l_no);
+            for (let i = 0; i < n; i++) {
+                let r = parseInt(Math.random() * 31)
+                str += data[r];
+            }
+            serial_number.value = str;
+        })
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </body>
 
 </html>

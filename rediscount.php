@@ -147,13 +147,13 @@ try {
                             折扣資料
                         </div>
                         <div class="card-body">
-                            <form action="doRediscount.php" method="post">
+                            <form action="api/doRediscount.php" method="post">
                                 <table class="table table-bordered">
                                     <tbody>
-                                        <label for="hidden" id="id" value="<?= $row["discount_id"] ?>"></label>
+                                        <input type="hidden" name="id" value="<?= $row["discount_id"] ?>"></input>
                                         <tr>
                                             <th>活動名稱</th>
-                                            <td><input for="form-control" type="text" id="main" value="<?= $row["main"] ?>"></td>
+                                            <td><input for="form-control" type="text" name="main" value="<?= $row["main"] ?>"></td>
                                         </tr>
                                         <tr>
                                             <th>優惠序號</th>
@@ -162,37 +162,45 @@ try {
                                         <tr>
                                             <th>種類</th>
                                             <td>
-                                                <select name="" id="type">
+                                                <select name="type" id="">
                                                     <option value="<?= $row["type"] ?>"><?= $row["type"] ?></option>
                                                     <?php if ($row["type"] == "金額") $type = "百分比";
-                                                          else $type = "金額" ?>
-                                                    <option value="<?= $type?>"><?= $type?></option>
+                                                    else $type = "金額" ?>
+                                                    <option value="<?= $type ?>"><?= $type ?></option>
                                                 </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>折扣</th>
-                                            <td><input for="form-control" id="amount" type="text" value="<?= $row["amount"] ?>"></td>
+                                            <td><input for="form-control" name="amount" type="text" value="<?= $row["amount"] ?>"></td>
                                         </tr>
                                         <tr>
                                             <th>數量</th>
-                                            <td><input for="form-control" id="num" type="text" value="<?= $row["num"] ?>"></td>
+                                            <td><input for="form-control" name="num" type="text" value="<?= $row["num"] ?>"></td>
                                         </tr>
                                         <tr>
                                             <th>低銷金額</th>
-                                            <td><input for="form-control" id="low_consumption" type="text" value="<?= $row["low_consumption"] ?>"></td>
+                                            <td><input for="form-control" name="low_consumption" type="text" value="<?= $row["low_consumption"] ?>"></td>
                                         </tr>
                                         <tr>
                                             <th>併用限制</th>
-                                            <td><input for="form-control" id="restriction" type="text" value="<?= $row["restriction"] ?>"></td>
+                                            <td><input for="form-control" name="restriction" type="text" value="<?= $row["restriction"] ?>"></td>
                                         </tr>
                                         <tr>
                                             <th>開始時間</th>
-                                            <td><input for="form-control" id="start_date" type="text" value="<?= $row["start_date"] ?>"></td>
+                                            <?php $start_date = substr($row["start_date"], 0, 10);
+                                            $start_time = substr($row["start_date"], 11, 5); ?>
+                                            <td><input for="form-control" name="start_date" type="date" value="<?= $start_date ?>">
+                                                <input type="time" for="form-contorl" name="start_time" type="time" value="<?= $start_time ?>">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>結束時間</th>
-                                            <td><input for="form-control" id="end_date" type="text" value="<?= $row["end_date"] ?>"></td>
+                                            <?php $end_date = substr($row["end_date"], 0, 10);
+                                            $end_time = substr($row["end_date"], 11, 5); ?>
+                                            <td><input for="form-control" name="end_date" type="date" value="<?= $end_date ?>">
+                                                <input type="time" for="form-contorl" name="end_time" type="time" value="<?= $end_time ?>">
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

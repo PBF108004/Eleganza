@@ -1,12 +1,12 @@
-<?php
+<?php 
     require_once("pdo-conncetion.php");
 
-    if(!isset($_POST["id"])) {
+    if(!isset($_POST["main"])) {
         die("請循正常管道進入此頁");
     }
 
-    $id = $_POST["id"];
     $main = $_POST["main"];
+    $serial_number = $_POST["serial_number"];
     $type = $_POST["type"];
     $amount = $_POST["amount"];
     $num = $_POST["num"];
@@ -16,11 +16,24 @@
     $start_time = $_POST["start_time"];
     $end_date = $_POST["end_date"];
     $end_time = $_POST["end_time"];
+
+    if(empty($main) || empty($serial_number) || $type =="0" || empty($amount) || empty($num) || empty($low_consumption) || empty($start_date) || empty($start_time) || empty($end_date) || empty($end_time)) {
+        $data = [
+            "status" => 0,
+            "message" => "請輸入必填欄位"
+        ];
+        echo json_encode($data);
+        exit;
+    }
+    if($restriction )
+
     $start = $start_date. " ". $start_time.":00";
     $end = $end_date. " ". $end_time.":00";
-    $sql = "UPDATE `discount` SET `main`='$main',`type`='$type',`amount`='$amount',`num`='$num',`low_consumption`='$low_consumption',`restriction`='$restriction',`start_date`='$start',`end_date`='$end' WHERE discount_id = $id";
+
+    // exit;
+    $sql = "INSERT INTO discount(main, serial_number, type, amount, num, low_consumption, restriction, start_date, end_date) VALUES ('$main', '$serial_number', '$type', '$amount', '$num', '$low_consumption', '$restriction', '$start', '$end')";
     $stmt = $db_host->prepare($sql);
-    
+
     try {
         $stmt->execute();
     } catch (PDOException $e) {
@@ -29,5 +42,3 @@
         $db_host = null;
         exit;
     }
-
-    header("location: discounts.php");

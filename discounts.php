@@ -2,13 +2,13 @@
 require_once("pdo-conncetion.php");
 
 $sql = "SELECT discount.*, COUNT(us_discount.us_id) AS usnum FROM discount
-JOIN us_discount ON discount.discount_id = us_discount.discount_id";
+LEFT JOIN us_discount ON discount.discount_id = us_discount.discount_id";
 $stmt = $db_host->prepare($sql);
 
 try {
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $discountCount = count($rows);
+    $discountCount = $stmt->rowCount();
 } catch (PDOException $e) {
     echo "預處理陳述式失敗<br>";
     echo "Error: " . $e->getMessage();
