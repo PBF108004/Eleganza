@@ -55,7 +55,6 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="newdiscount.php">新增折扣</a>
                                     <a class="nav-link" href="discounts.php">折扣管理</a>
                                 </nav>
                             </div>

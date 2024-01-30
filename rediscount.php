@@ -32,6 +32,7 @@ try {
     <title>折扣管理-Eleganza</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?php include("css/css.php") ?>
 </head>
 
 <body>
@@ -137,77 +138,78 @@ try {
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">修改折扣</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.php">總覽</a></li>
-                        <li class="breadcrumb-item"><a href="discounts.php">折扣管理</a></li>
-                        <li class="breadcrumb-item active">修改折扣</li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="discounts.php">折扣管理</a></li>
+                        <li class="breadcrumb-item mx-3 active">修改折扣</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            折扣資料
-                        </div>
-                        <div class="card-body">
-                            <form action="api/doRediscount.php" method="post">
-                                <table class="table table-bordered">
-                                    <tbody>
-                                        <input type="hidden" name="id" value="<?= $row["discount_id"] ?>"></input>
-                                        <tr>
-                                            <th>活動名稱</th>
-                                            <td><input for="form-control" type="text" name="main" value="<?= $row["main"] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <th>優惠序號</th>
-                                            <td><label for="form-control" type="text" value=""><?= $row["serial_number"] ?></label></td>
-                                        </tr>
-                                        <tr>
-                                            <th>種類</th>
-                                            <td>
-                                                <select name="type" id="">
-                                                    <option value="<?= $row["type"] ?>"><?= $row["type"] ?></option>
-                                                    <?php if ($row["type"] == "金額") $type = "百分比";
-                                                    else $type = "金額" ?>
-                                                    <option value="<?= $type ?>"><?= $type ?></option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>折扣</th>
-                                            <td><input for="form-control" name="amount" type="text" value="<?= $row["amount"] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <th>數量</th>
-                                            <td><input for="form-control" name="num" type="text" value="<?= $row["num"] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <th>低銷金額</th>
-                                            <td><input for="form-control" name="low_consumption" type="text" value="<?= $row["low_consumption"] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <th>併用限制</th>
-                                            <td><input for="form-control" name="restriction" type="text" value="<?= $row["restriction"] ?>"></td>
-                                        </tr>
-                                        <tr>
-                                            <th>開始時間</th>
-                                            <?php $start_date = substr($row["start_date"], 0, 10);
-                                            $start_time = substr($row["start_date"], 11, 5); ?>
-                                            <td><input for="form-control" name="start_date" type="date" value="<?= $start_date ?>">
-                                                <input type="time" for="form-contorl" name="start_time" type="time" value="<?= $start_time ?>">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>結束時間</th>
-                                            <?php $end_date = substr($row["end_date"], 0, 10);
-                                            $end_time = substr($row["end_date"], 11, 5); ?>
-                                            <td><input for="form-control" name="end_date" type="date" value="<?= $end_date ?>">
-                                                <input type="time" for="form-contorl" name="end_time" type="time" value="<?= $end_time ?>">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <a href="discounts.php" type="button" class="mx-3 btn btn-primary">取消</a>
-                                <button type="submit" class="btn btn-primary">修改</button>
-                            </form>
-                        </div>
+
+                    <div class="card-body">
+                        <form action="doRediscount.php" method="post">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <input type="hidden" name="id" value="<?= $row["discount_id"] ?>"></input>
+                                    <tr>
+                                        <th>活動名稱</th>
+                                        <td><input for="form-control" type="text" name="main" value="<?= $row["main"] ?>"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>優惠序號</th>
+                                        <td><label for="form-control" type="text" value=""><?= $row["serial_number"] ?></label></td>
+                                    </tr>
+                                    <tr>
+                                        <th>種類</th>
+                                        <td>
+                                            <select name="type" id="">
+                                                <option value="<?= $row["type"] ?>"><?= $row["type"] ?></option>
+                                                <?php if ($row["type"] == "金額") $type = "百分比";
+                                                else $type = "金額" ?>
+                                                <option value="<?= $type ?>"><?= $type ?></option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>折扣</th>
+                                        <td><input for="form-control" name="amount" type="text" value="<?= $row["amount"] ?>"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>數量</th>
+                                        <td><input for="form-control" name="num" type="text" value="<?= $row["num"] ?>"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>低銷金額</th>
+                                        <td><input for="form-control" name="low_consumption" type="text" value="<?= $row["low_consumption"] ?>"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>併用限制</th>
+                                        <td><input for="form-control" name="restriction" type="text" value="<?= $row["restriction"] ?>"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>開始時間</th>
+                                        <?php $start_date = substr($row["start_date"], 0, 10);
+                                        $start_time = substr($row["start_date"], 11, 5); ?>
+                                        <td><input for="form-control" name="start_date" type="date" value="<?= $start_date ?>">
+                                            <input type="time" for="form-contorl" name="start_time" type="time" value="<?= $start_time ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>結束時間</th>
+                                        <?php $end_date = substr($row["end_date"], 0, 10);
+                                        $end_time = substr($row["end_date"], 11, 5); ?>
+                                        <td><input for="form-control" name="end_date" type="date" value="<?= $end_date ?>">
+                                            <input type="time" for="form-contorl" name="end_time" type="time" value="<?= $end_time ?>">
+                                        </td>
+                                    </tr>
+                                    <?php if($row["valid"] ==0): ?>
+                                    <tr>
+                                        <th>狀態</th></th>
+                                        <td><input type="radio" name="valid" value="1" id="up"><label for="up">上架</label></td>
+                                    </tr>
+                                    <?php endif;?>
+                                </tbody>
+                            </table>
+                            <a href="discounts.php" type="button" class="mx-3 btn btn-primary">取消</a>
+                            <button type="submit" class="btn btn-primary">修改</button>
+                        </form>
                     </div>
                 </div>
             </main>

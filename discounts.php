@@ -1,8 +1,7 @@
 <?php
 require_once("pdo-conncetion.php");
 
-$sql = "SELECT discount.*, COUNT(us_discount.us_id) AS usnum FROM discount
-LEFT JOIN us_discount ON discount.discount_id = us_discount.discount_id";
+$sql = "SELECT * FROM discount";
 $stmt = $db_host->prepare($sql);
 
 try {
@@ -14,6 +13,10 @@ try {
     echo "Error: " . $e->getMessage();
     $db_host = null;
     exit;
+}
+
+if (isset($_GET["id"])) {
+    $discountId = 0;
 }
 ?>
 <!DOCTYPE html>
@@ -28,6 +31,7 @@ try {
     <title>折扣管理-Eleganza</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?php include("css/css.php") ?>
 </head>
 
 <body>
@@ -76,7 +80,6 @@ try {
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="newdiscount.php">新增折扣</a>
                                 <a class="nav-link" href="discounts.php">折扣管理</a>
                             </nav>
                         </div>
@@ -131,56 +134,91 @@ try {
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">折扣管理</h1>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="mt-4">折扣管理</h1>
+                        </div>
+                        <div><a href="newdiscount.php" class="btn"><i class="fa-solid fa-plus text-secondary"></i></a></div>
+                    </div>
+
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="index.php">總覽</a></li>
                         <li class="breadcrumb-item active">折扣管理</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            折扣資料
-                        </div>
-                        <div class="card-body">
-                            <div class="py-2">
-                                共 <?=$discountCount ?>筆資料
+                    <div class="py-2">
+                        共 <?= $discountCount ?>筆資料
+                    </div>
+                    <table class="table table-striped table-width">
+                        <thead>
+                            <tr>
+                                <th>id<div class="text-end"><a href=""><i class="fa-solid fa-sort text-secondary"></i></a></th>
+                                <th>活動名稱<div class="text-end"><a href=""><i class="fa-solid fa-sort text-secondary"></i></a></div></th>
+                                <th>優惠序號</th>
+                                <th>種類</th>
+                                <th>折扣</th>
+                                <th>數量</th>
+                                <th>低銷金額</th>
+                                <th>併用限制</th>
+                                <th>開始時間</th>
+                                <th>結束時間</th>
+                                <th>狀態</th>
+                                <th>修改</th>
+                                <th>刪除</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($rows as $row) : ?>
+                                <tr>
+                                    <td><?= $row["discount_id"] ?></td>
+                                    <td><?= $row["main"] ?></td>
+                                    <td><?= $row["serial_number"] ?></td>
+                                    <td><?= $row["type"] ?></td>
+                                    <td><?= $row["amount"] ?></td>
+                                    <td>已使用<?php $usnum = $row["discount_id"];
+                                            $ussql = "SELECT * FROM us_discount WHERE discount_id = '$usnum'";
+                                            $usstmt = $db_host->prepare($ussql);
+                                            try {
+                                                $usstmt->execute();
+                                                $usrows = $usstmt->fetchAll(PDO::FETCH_ASSOC);
+                                                $usCount = count($usrows);
+                                            } catch (PDOException $e) {
+                                                echo "預處理陳述式失敗<br>";
+                                                echo "Error: " . $e->getMessage();
+                                                $db_host = null;
+                                                exit;
+                                            }
+                                            echo $usCount; ?> /<br> 可使用 <?= $row["num"] ?></td>
+                                    <td><?= $row["low_consumption"] ?></td>
+                                    <td><?= $row["restriction"] ?></td>
+                                    <td><?= $row["start_date"] ?></td>
+                                    <td><?= $row["end_date"] ?></td>
+                                    <td class="text-danger"><?php if($row["valid"] == 0) echo "下架"?></td>
+                                    <td><a href="rediscount.php?id=<?= $row["discount_id"] ?>" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
+
+                                    <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $row["discount_id"] ?>" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-secondary"></i></button></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">刪除折扣</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    是否刪除折扣?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button onclick="express()" href="doDeletediscount.php?id=<?= $discountId ?>" class="btn btn-danger">確定</button>
+                                </div>
                             </div>
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>id</th>
-                                        <th>活動名稱</th>
-                                        <th>優惠序號</th>
-                                        <th>種類</th>
-                                        <th>折扣</th>
-                                        <th>數量</th>
-                                        <th>低銷金額</th>
-                                        <th>併用限制</th> 
-                                        <th>開始時間</th>
-                                        <th>結束時間</th>
-                                        <th>修改</th>
-                                        <th>刪除</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($rows as $row): ?>
-                                    <tr>
-                                        <td><?=$row["discount_id"] ?></td>
-                                        <td><?=$row["main"] ?></td>
-                                        <td><?= $row["serial_number"] ?></td>
-                                        <td><?= $row["type"] ?></td>
-                                        <td><?= $row["amount"] ?></td>
-                                        <td>已使用<?= $row["usnum"] ?> /<br> 可使用 <?=$row["num"] ?></td>
-                                        <td><?= $row["low_consumption"] ?></td>
-                                        <td><?= $row["restriction"] ?></td>
-                                        <td><?=$row["start_date"] ?></td>
-                                        <td><?=$row["end_date"] ?></td>
-                                        <td><a href="rediscount.php?id=<?=$row["discount_id"] ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
-                                        <td><a href="doDeletediscount.php?id=<?=$row["discount_id"] ?>" class="btn btn-primary"><i class="fa-solid fa-trash"></i></a></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
@@ -199,6 +237,20 @@ try {
             </footer>
         </div>
     </div>
+    <script>
+        const getid = document.querySelectorAll(".getid");
+        let id = "";
+
+        for (let i = 0; i < getid.length; i++) {
+            getid[i].addEventListener("click", function() {
+                id = this.dataset.id;
+            })
+        }
+
+        function express() {
+            window.location.replace("doDeletediscount.php?id=" + id);
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
 </body>

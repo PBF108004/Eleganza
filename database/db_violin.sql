@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-01-27 11:54:22
+-- 產生時間： 2024-01-30 18:28:22
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -148,15 +148,17 @@ CREATE TABLE `discount` (
   `low_consumption` int(6) DEFAULT NULL,
   `restriction` varchar(10) DEFAULT NULL,
   `start_date` datetime NOT NULL,
-  `end_date` datetime NOT NULL
+  `end_date` datetime NOT NULL,
+  `valid` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- 傾印資料表的資料 `discount`
 --
 
-INSERT INTO `discount` (`discount_id`, `main`, `serial_number`, `type`, `amount`, `num`, `low_consumption`, `restriction`, `start_date`, `end_date`) VALUES
-(1, '全館折扣', 'NEWOPEN100', '百分比', 50, 2, 0, '無限制', '2024-01-27 00:00:00', '2024-01-31 00:00:00');
+INSERT INTO `discount` (`discount_id`, `main`, `serial_number`, `type`, `amount`, `num`, `low_consumption`, `restriction`, `start_date`, `end_date`, `valid`) VALUES
+(1, '全館折扣', 'NEWOPEN100', '金額', 50, 2, 1000, '無限制', '2024-01-27 00:00:00', '2024-02-04 00:00:00', 1),
+(2, '全館限時95折', 'PI6JI27C4L', '百分比', 95, 3, 95, '無限制', '2024-01-29 00:00:00', '2024-01-31 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -762,7 +764,7 @@ ALTER TABLE `course_like`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `discount`
 --
 ALTER TABLE `discount`
-  MODIFY `discount_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `discount_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `imgs`

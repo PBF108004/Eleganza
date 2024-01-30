@@ -1,6 +1,10 @@
 <style>
+    a {
+        text-wrap: nowrap;
+    }
+
     .table-width {
-        
+
         & .th {
             width: 17%;
         }

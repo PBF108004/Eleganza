@@ -31,7 +31,7 @@
     $end = $end_date. " ". $end_time.":00";
 
     // exit;
-    $sql = "INSERT INTO discount(main, serial_number, type, amount, num, low_consumption, restriction, start_date, end_date) VALUES ('$main', '$serial_number', '$type', '$amount', '$num', '$low_consumption', '$restriction', '$start', '$end')";
+    $sql = "INSERT INTO discount(main, serial_number, type, amount, num, low_consumption, restriction, start_date, end_date, valid) VALUES ('$main', '$serial_number', '$type', '$amount', '$num', '$low_consumption', '$restriction', '$start', '$end', 1)";
     $stmt = $db_host->prepare($sql);
 
     try {

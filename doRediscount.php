@@ -16,9 +16,10 @@
     $start_time = $_POST["start_time"];
     $end_date = $_POST["end_date"];
     $end_time = $_POST["end_time"];
+    $valid = $_POST["valid"];
     $start = $start_date. " ". $start_time.":00";
     $end = $end_date. " ". $end_time.":00";
-    $sql = "UPDATE `discount` SET `main`='$main',`type`='$type',`amount`='$amount',`num`='$num',`low_consumption`='$low_consumption',`restriction`='$restriction',`start_date`='$start',`end_date`='$end' WHERE discount_id = $id";
+    $sql = "UPDATE `discount` SET `main`='$main',`type`='$type',`amount`='$amount',`num`='$num',`low_consumption`='$low_consumption',`restriction`='$restriction',`start_date`='$start',`end_date`='$end',`valid`='$valid' WHERE discount_id = $id";
     $stmt = $db_host->prepare($sql);
     
     try {

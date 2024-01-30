@@ -10,7 +10,7 @@
     <title>新增折扣-Eleganza</title>
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <?= include("css/css.php") ?>
+    <?php include("css/css.php") ?>
 </head>
 
 <body class="sb-nav-fixed">
@@ -59,7 +59,6 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="newdiscount.php">新增折扣</a>
                                 <a class="nav-link" href="discounts.php">折扣管理</a>
                             </nav>
                         </div>
@@ -116,9 +115,9 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">新增折扣</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.php">總覽</a></li>
-                        <li class="breadcrumb-item"><a href="discounts.php">折扣管理</a></li>
-                        <li class="breadcrumb-item active">新增折扣</li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="discounts.php">折扣管理</a></li>
+                        <li class="breadcrumb-item mx-3 active">新增折扣</li>
                     </ol>
                     <div class="card py-3 px-5">
                         <table class="table table-width">
@@ -157,16 +156,16 @@
                             </tr>
                             <tr>
                                 <th><label for="form-label">折扣</label></th>
-                                <td><input type="text" for="form-control" id="amount"></td>
+                                <td><input type="number" for="form-control" id="amount"></td>
                             </tr>
                             <tr>
                                 <th><label for="form-label">優惠券數量</label></th>
-                                <td><input type="text" for="form-control" id="num">
+                                <td><input type="number" for="form-control" id="num">
                             </tr>
                             </td>
                             <tr>
                                 <th><label for="form-label">最低消費限制</label></th>
-                                <td><input type="text" for="form-control" id="low_consumption"></td>
+                                <td><input type="number" for="form-control" id="low_consumption"></td>
                             </tr>
                             <tr>
                                 <th><label for="form-label">併用限制</label></th>
