@@ -30,6 +30,7 @@ if (isset($_GET["id"])) {
     <meta name="author" content="" />
     <title>折扣管理-Eleganza</title>
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="./css/jquery.dataTables.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <?php include("css/css.php") ?>
 </head>
@@ -145,61 +146,69 @@ if (isset($_GET["id"])) {
                         <li class="breadcrumb-item"><a class="nav-link link-primary" href="index.php">總覽</a></li>
                         <li class="breadcrumb-item active">折扣管理</li>
                     </ol>
-                    <div class="py-2">
+                    <!-- <div class="py-2">
                         共 <?= $discountCount ?>筆資料
-                    </div>
-                    <table class="table table-striped table-width">
-                        <thead>
-                            <tr>
-                                <th>id<div class="text-end"><a href=""><i class="fa-solid fa-sort text-secondary"></i></a></th>
-                                <th>活動名稱<div class="text-end"><a href=""><i class="fa-solid fa-sort text-secondary"></i></a></div></th>
-                                <th>優惠序號</th>
-                                <th>種類</th>
-                                <th>折扣</th>
-                                <th>數量</th>
-                                <th>低銷金額</th>
-                                <th>併用限制</th>
-                                <th>開始時間</th>
-                                <th>結束時間</th>
-                                <th>狀態</th>
-                                <th>修改</th>
-                                <th>刪除</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($rows as $row) : ?>
-                                <tr>
-                                    <td><?= $row["discount_id"] ?></td>
-                                    <td><?= $row["main"] ?></td>
-                                    <td><?= $row["serial_number"] ?></td>
-                                    <td><?= $row["type"] ?></td>
-                                    <td><?= $row["amount"] ?></td>
-                                    <td>已使用<?php $usnum = $row["discount_id"];
-                                            $ussql = "SELECT * FROM us_discount WHERE discount_id = '$usnum'";
-                                            $usstmt = $db_host->prepare($ussql);
-                                            try {
-                                                $usstmt->execute();
-                                                $usrows = $usstmt->fetchAll(PDO::FETCH_ASSOC);
-                                                $usCount = count($usrows);
-                                            } catch (PDOException $e) {
-                                                echo "預處理陳述式失敗<br>";
-                                                echo "Error: " . $e->getMessage();
-                                                $db_host = null;
-                                                exit;
-                                            }
-                                            echo $usCount; ?> /<br> 可使用 <?= $row["num"] ?></td>
-                                    <td><?= $row["low_consumption"] ?></td>
-                                    <td><?= $row["restriction"] ?></td>
-                                    <td><?= $row["start_date"] ?></td>
-                                    <td><?= $row["end_date"] ?></td>
-                                    <td class="text-danger"><?php if($row["valid"] == 0) echo "下架"?></td>
-                                    <td><a href="rediscount.php?id=<?= $row["discount_id"] ?>" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
+                    </div> -->
 
-                                    <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $row["discount_id"] ?>" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-secondary"></i></button></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="table-responsive">
+                                <table id="example" class="display" style="min-width: 845px">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>活動名稱</th>
+                                            <th>優惠序號</th>
+                                            <th>種類</th>
+                                            <th>折扣</th>
+                                            <th>數量</th>
+                                            <th>低銷金額</th>
+                                            <th>併用限制</th>
+                                            <th>開始時間</th>
+                                            <th>結束時間</th>
+                                            <th>狀態</th>
+                                            <th>修改</th>
+                                            <th>刪除</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($rows as $row) : ?>
+                                            <tr>
+                                                <td><?= $row["discount_id"] ?></td>
+                                                <td><?= $row["main"] ?></td>
+                                                <td><?= $row["serial_number"] ?></td>
+                                                <td><?= $row["type"] ?></td>
+                                                <td><?= $row["amount"] ?></td>
+                                                <td>已使用<?php $usnum = $row["discount_id"];
+                                                        $ussql = "SELECT * FROM us_discount WHERE discount_id = '$usnum'";
+                                                        $usstmt = $db_host->prepare($ussql);
+                                                        try {
+                                                            $usstmt->execute();
+                                                            $usrows = $usstmt->fetchAll(PDO::FETCH_ASSOC);
+                                                            $usCount = count($usrows);
+                                                        } catch (PDOException $e) {
+                                                            echo "預處理陳述式失敗<br>";
+                                                            echo "Error: " . $e->getMessage();
+                                                            $db_host = null;
+                                                            exit;
+                                                        }
+                                                        echo $usCount; ?> /<br> 可使用 <?= $row["num"] ?></td>
+                                                <td><?= $row["low_consumption"] ?></td>
+                                                <td><?= $row["restriction"] ?></td>
+                                                <td><?= $row["start_date"] ?></td>
+                                                <td><?= $row["end_date"] ?></td>
+                                                <td class="text-danger"><?php if ($row["valid"] == 0) echo "下架" ?></td>
+                                                <td><a href="rediscount.php?id=<?= $row["discount_id"] ?>" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
+
+                                                <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $row["discount_id"] ?>" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-secondary"></i></button></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
 
 
@@ -253,6 +262,13 @@ if (isset($_GET["id"])) {
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
+
+    <!-- Required vendors -->
+    <script src="./vendor/global/global.min.js"></script>
+
+    <!-- Datatable -->
+    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="./js/plugins-init/datatables.init.js"></script>
 </body>
 
 </html>

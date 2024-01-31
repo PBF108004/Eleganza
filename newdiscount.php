@@ -128,7 +128,7 @@
                             <tr>
                                 <th><label for="form-label">序號</label></th>
                                 <td><input type="text" for="form-control" id="serial_number">
-                                    <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary mx-3">隨機序號</button>
+                                    <button type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="btn btn-secondary mx-3">隨機序號</button>
                                     <div class="collapse" id="collapseExample">
                                         <div class="card card-body my-3">
                                             <div class="d-flex align-items-center">
@@ -140,7 +140,7 @@
                                                         <option value="10" selected>10</option>
                                                         <option value="15">15</option>
                                                     </select></div>
-                                                <button class="btn btn-primary mx-3" id="random">隨機產生</button>
+                                                <button class="btn btn-secondary mx-3" id="random">隨機產生</button>
                                             </div>
                                         </div>
                                     </div>
@@ -185,8 +185,8 @@
                             </tr>
                         </table>
                         <div>
-                            <a href="discounts.php" class="mx-3 btn btn-primary">取消</a>
-                            <button type="button" id="send" class="btn btn-primary">新增優惠券</button>
+                            <a href="discounts.php" class="mx-3 btn btn-secondary">取消</a>
+                            <button type="button" id="send" class="btn btn-outline-info">新增優惠券</button>
                         </div>
                     </div>
                 </div>

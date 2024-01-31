@@ -143,9 +143,9 @@ try {
                         <li class="breadcrumb-item mx-3 active">修改折扣</li>
                     </ol>
 
-                    <div class="card-body">
+                    <div class="card py-3 px-5">
                         <form action="doRediscount.php" method="post">
-                            <table class="table table-striped">
+                            <table class="table">
                                 <tbody>
                                     <input type="hidden" name="id" value="<?= $row["discount_id"] ?>"></input>
                                     <tr>
@@ -207,8 +207,8 @@ try {
                                     <?php endif;?>
                                 </tbody>
                             </table>
-                            <a href="discounts.php" type="button" class="mx-3 btn btn-primary">取消</a>
-                            <button type="submit" class="btn btn-primary">修改</button>
+                            <a href="discounts.php" type="button" class="mx-3 btn btn-secondary">取消</a>
+                            <button type="submit" class="btn btn-outline-info">修改</button>
                         </form>
                     </div>
                 </div>
