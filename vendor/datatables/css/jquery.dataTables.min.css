@@ -40,7 +40,7 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 table.dataTable thead .sorting {
-    background-image: url("../images/sort_both.png");
+    background-image: url("../images/sort_both.png")
 }
 
 table.dataTable thead .sorting_asc {
@@ -52,7 +52,7 @@ table.dataTable thead .sorting_desc {
 }
 
 table.dataTable thead .sorting_asc_disabled {
-    background-image: url("../images/sort_asc_disabled.png");
+    background-image: url("../images/sort_asc_disabled.png")
 }
 
 table.dataTable thead .sorting_desc_disabled {

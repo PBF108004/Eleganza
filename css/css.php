@@ -1,4 +1,8 @@
 <style>
+    .loginbodybg {
+        background: url("./images/loginbackground.png") center center /cover;
+    }
+
     a {
         text-wrap: nowrap;
     }
@@ -12,6 +16,29 @@
         & .nmuber {
             width: 100px;
         }
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-transition-delay: 111111s;
+        -webkit-transition: color 11111s ease-out, background-color 111111s ease-out;
+    }
+
+    input[type=checkbox] {
+        display: inline-block;
+        background-color: #aaa;
+        padding: 3px 6px;
+        border: 1px solid gray;
+        color: #444;
+        user-select: none;
+        /* 防止文字被滑鼠選取反白 */
+    }
+
+    input[type=checkbox]:checked {
+        color: yellow;
+        background-color: #444;
     }
 
     table.dataTable thead th,
