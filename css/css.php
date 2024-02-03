@@ -18,6 +18,30 @@
         }
     }
 
+    .object-fit-cover{
+            width:100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cart-icon{
+            font-size: 1.8rem;
+        }
+        .cart-count{
+            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: -5px;
+            right: -10px;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-img{
+            --width:84px;
+            width: var(--width);
+            height: var(--width);
+        }
+
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
