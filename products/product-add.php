@@ -14,14 +14,14 @@ $neck = trim($_POST["neckAdd"]);
 $finger = trim($_POST["fingerAdd"]);
 $bow = trim($_POST["bowAdd"]);
 
-$sqlAdd = "INSERT INTO product (product_category_id, name, price, num, introduction, brand, size, top, back_and_sides, neck, fingerboard, bow, valid)
-VALUES ('$id','$name', '$price', '$num', '$intro', '$brand', '$size', '$top','$bas', '$neck', '$finger', '$bow', 1)";
+$sqlAdd = "INSERT INTO product (product_category_id, name, price, num, introduction, brand, size, top, back_and_sides, neck, fingerboard, bow, valid, status)
+VALUES ('$id','$name', '$price', '$num', '$intro', '$brand', '$size', '$top','$bas', '$neck', '$finger', '$bow', 1, 2)";
 
 if ($conn->query($sqlAdd) === true) {
    $lastProductId = $conn->insert_id;  // 获取刚插入产品的 ID
 
    // 处理图片上传
-   $targetDir = "../images/";
+   $targetDir = "../images/product_images/";
    $allowTypes = array('jpg', 'jpeg', 'png', 'gif');
 
    foreach ($_FILES['images']['name'] as $key => $val) {
@@ -36,6 +36,14 @@ if ($conn->query($sqlAdd) === true) {
             // 执行图片信息插入查询
             if (!$conn->query($sqlInsertImage)) {
                echo "Error inserting image information: " . $conn->error;
+            }
+            
+            // 如果是第一张图片，更新 product 表的 img 列
+            if ($key === 0) {
+               $sqlUpdateProduct = "UPDATE product SET img = '$fileName' WHERE product_id = $lastProductId";
+               if (!$conn->query($sqlUpdateProduct)) {
+                  echo "Error updating product information: " . $conn->error;
+               }
             }
          } else {
             echo "Error uploading $fileName. Please try again.";

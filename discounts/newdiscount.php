@@ -83,7 +83,7 @@ if (!isset($_SESSION["user"]))
                         </a>
                         <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.php">老師管理</a>
+                                <a class="nav-link" href="../teachers/layout-static.php">老師管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
@@ -94,7 +94,6 @@ if (!isset($_SESSION["user"]))
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -137,8 +136,8 @@ if (!isset($_SESSION["user"]))
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">新增折扣</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
-                        <li class="breadcrumb-item"><a class="nav-link link-info" href="discounts.php">折扣管理</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="discounts.php">折扣管理</a></li>
                         <li class="breadcrumb-item mx-3 active">新增折扣</li>
                     </ol>
                     <div class="card py-3 px-5">
@@ -208,7 +207,7 @@ if (!isset($_SESSION["user"]))
                         </table>
                         <div>
                             <a href="discounts.php" class="mx-3 btn btn-secondary">取消</a>
-                            <button type="button" id="send" class="btn btn-outline-info">新增優惠券</button>
+                            <button type="button" id="send" class="btn btn-outline-primary">新增優惠券</button>
                         </div>
                     </div>
                 </div>

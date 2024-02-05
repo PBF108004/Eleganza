@@ -23,7 +23,7 @@ $sql = "UPDATE product SET `name`='$name', price='$price', num='$num', introduct
 
 
 
-$targetDir = "../images/";
+$targetDir = "../images/product_images/";
 $allowTypes = array('jpg', 'jpeg', 'png', 'gif');
 
 foreach ($_FILES['images']['name'] as $key => $val) {

@@ -12,6 +12,7 @@ if (isset($_GET["product_id"])) {
       echo json_encode(['success' => false, 'message' => 'Failed to delete product: ' . $conn->error]);
    }
    $conn->close();
+   header("location: ./product-list.php");
 } else {
    if (isset($_POST['img_id'])) {
       $imgId = $_POST['img_id'];

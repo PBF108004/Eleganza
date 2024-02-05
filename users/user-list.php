@@ -80,13 +80,9 @@ if (isset($_GET["p"])) {
 
 
 //以下ID是你軟刪除後還會按照ID進行排序，顯示給用戶正確
-$sql = "SELECT ROW_NUMBER() OVER (ORDER BY user_id) AS DisplayID, user_id, name, account, phone, email, birth 
-        FROM users 
-        WHERE valid=1 $searchString 
-        $orderString 
-        LIMIT $startIndex, $perPage";
 
-$result = $conn->query($sql);
+
+$result = $conn->query($sqlAll);
 
 
 
@@ -120,11 +116,9 @@ if (isset($_GET["search"])) {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>會員管理-Eleganza</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <?php include("../css/css.php") ?>
 </head>
 
@@ -193,7 +187,7 @@ if (isset($_GET["search"])) {
                         </a>
                         <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.php">老師管理</a>
+                                <a class="nav-link" href="../teachers/layout-static.php">老師管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
@@ -204,7 +198,6 @@ if (isset($_GET["search"])) {
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -254,7 +247,7 @@ if (isset($_GET["search"])) {
                         </div>
                     </div>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
                         <li class="breadcrumb-item active">會員清單</li>
                     </ol>
                     <!-- Model -->
@@ -276,17 +269,17 @@ if (isset($_GET["search"])) {
                         </div>
                     </div>
                     <!--  -->
-                    <div>
+                    <!-- <div>
                         共<?= $userCount ?>人
                     </div>
                     <div class="d-flex justify-content-between">
-                        <?php if (isset($_GET["search"])) : ?>
+                        
                             <div class="py-2 me-2">
                                 <a name="" id="" class="btn btn-primary" href="user-list.php" role="button"><i class="fa-solid fa-arrow-left fa-fw"></i></a>
                             </div>
-                        <?php endif; ?>
-                    </div>
-                    <?php if (!isset($_GET["search"])) : ?>
+                        
+                    </div> -->
+                    <!-- 
                         <div class="px-2 justify-content-end d-flex align-items-center">
                             <form action="user-list.php" method="get" class="">
                                 <input type="text" name="search" placeholder="Search
@@ -300,61 +293,63 @@ if (isset($_GET["search"])) {
                                 <a class="btn" <?php if ($order == 3) echo "active" ?> href="user-list.php?order=3&p=<?= $p ?>"><i class="text-secondary fa-solid fa-arrow-down-a-z"></i></a>
                                 <a class="btn" <?php if ($order == 4) echo "active" ?> href="user-list.php?order=4&p=<?= $p ?>"><i class="text-secondary fa-solid fa-arrow-down-z-a"></i></a>
                             </div>
-                        <?php endif; ?>
-                        </div>
-                        <div class="card-body">
-                            <?php if ($userCount > 0) : ?>
-                                <?php if ($emptySearch) : ?>
+                        
+                        </div> -->
+                    <div class="card-body">
+                        <!-- 
+                                
                                     <p>請查明後再輸入。</p>
-                                <?php endif; ?>
-                                <table id="" class="table table-bordered">
-                                    <thead>
+                                 -->
+                        <!-- <table id="" class="table table-bordered"> -->
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>姓名</th>
+                                        <th>帳號</th>
+                                        <th>電話</th>
+                                        <th>電子郵件</th>
+                                        <th>生日</th>
+                                        <th>詳細資訊</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 等資料庫 -->
+                                    <!-- 參考上課users.php -->
+                                    <?php
+                                    foreach ($rows as $user) :
+                                    ?>
                                         <tr>
-                                            <th>id</th>
-                                            <th>姓名</th>
-                                            <th>帳號</th>
-                                            <th>電話</th>
-                                            <th>電子郵件</th>
-                                            <th>生日</th>
-                                            <th>詳細資訊</th>
+                                            <td id="id"><?= $user["user_id"] ?></td>
+                                            <td id="name"><?= $user["name"] ?></td>
+                                            <td id="account"><?= $user["account"] ?></td>
+                                            <td id="phone"><?= $user["phone"] ?></td>
+                                            <td id="email"><?= $user["email"] ?></td>
+                                            <td id="birth"><?= $user["birth"] ?></td>
+                                            <td><a class="btn" href="user.php?id=<?= $user["user_id"] ?>" role="button"><i class="text-secondary fa-solid fa-circle-info fa-fw"></i></a>
+                                                <button class="btn" id="delete" data-id="<?= $user["user_id"] ?>" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="text-danger fa-solid fa-trash fa-fw"></i></button>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- 等資料庫 -->
-                                        <!-- 參考上課users.php -->
-                                        <?php
-                                        foreach ($rows as $user) :
-                                        ?>
-                                            <tr>
-                                                <td id="id"><?= $user["DisplayID"] ?></td>
-                                                <td id="name"><?= $user["name"] ?></td>
-                                                <td id="account"><?= $user["account"] ?></td>
-                                                <td id="phone"><?= $user["phone"] ?></td>
-                                                <td id="email"><?= $user["email"] ?></td>
-                                                <td id="birth"><?= $user["birth"] ?></td>
-                                                <td><a class="btn" href="user.php?id=<?= $user["user_id"] ?>" role="button"><i class="text-secondary fa-solid fa-circle-info fa-fw"></i></a>
-                                                    <button class="btn" data-id="<?= $user["user_id"] ?>" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="text-danger fa-solid fa-trash fa-fw"></i></button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                                <?php if (!isset($_GET["search"])) : ?>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                            <!-- 
                                     <nav aria-label="Page navigation example">
                                         <ul class="pagination">
-                                            <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
+                                            
                                                 <li class="page-item <?php if ($i == $p) echo "active"; ?>">
                                                     <a class="page-link" href="user-list.php?order=<?= $order ?>&p=<?= $i ?>"><?= $i ?></a>
                                                 </li>
-                                            <?php endfor; ?>
+                                           
                                         </ul>
                                     </nav>
-                                <?php endif; ?>
-                            <?php else : ?>
+                                
+                            
                                 沒有使用者
-                            <?php endif; ?>
+                             -->
                         </div>
-                </div>
+                    </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -366,18 +361,12 @@ if (isset($_GET["search"])) {
         </div>
     </div>
     <?php include("../js/js.php") ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="../assets/demo/chart-area-demo.js"></script>
-    <script src="../assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="../js/datatables-simple-demo.js"></script>
+
     <script>
         var userId = 0;
         $(document).ready(function() {
             // 使用事件委托来处理动态生成的按钮
-            $(document).on('click', '.btn-danger', function() {
+            $(document).on('click', '#delete', function() {
                 userId = $(this).data('id');
                 // console.log("用户 ID:", userId);
             });
@@ -387,10 +376,15 @@ if (isset($_GET["search"])) {
             window.location.replace("doDeleteUser.php?id=" + userId);
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../js/scripts.js"></script>
+
+    <!-- Required vendors -->
+    <script src="../vendor/global/global.min.js"></script>
+
+    <!-- Datatable -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../js/plugins-init/datatables.init.js"></script>
 </body>
 
 </html>
-
-<!-- <a class="btn btn-danger" href="doDeleteUser.php?id=?= $user['user_id'] ?>" onclick="return confirm('確定要刪除此使用者嗎？');">
-                                                            <i class="fa fa-trash"></i>
-                                                        </a> -->

@@ -51,60 +51,42 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`course_id`, `course_category_id`, `teacher_id`, `name`, `quota`, `price`, `img`, `start_date`, `end_date`, `start_time`, `end_time`, `style_id`, `description`, `comment`, `valid`, `group_id`) VALUES
-(101, 1, 1, '小提琴演奏', 8, 1000, '1706930755.jpg', '', '', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(102, 2, 1, '小提琴演奏', 14, 1500, '1.Lin Wenxi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(201, 1, 2, '小提琴演奏', 6, 1000, '2.Wu Junyan.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(202, 2, 2, '小提琴演奏', 4, 1500, '2.Wu Junyan.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(301, 1, 3, '小提琴演奏', 2, 1000, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(302, 2, 3, '小提琴演奏', 4, 1500, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(303, 3, 3, '小提琴演奏', 6, 2000, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(304, 2, 3, '小提琴演奏', 6, 1800, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '2', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(401, 1, 4, '小提琴演奏', 12, 1000, '4.Xu Ziling.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(501, 1, 5, '小提琴演奏', 4, 1000, '5.Yang Yusi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(502, 2, 5, '小提琴演奏', 3, 1500, '5.Yang Yusi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(503, 3, 5, '小提琴演奏', 6, 2000, '5.Yang Yusi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(601, 1, 6, '小提琴演奏', 12, 1000, '6.Chen Wanyun.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(701, 1, 7, '小提琴演奏', 4, 1000, '7.Peng Zhixuan.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(801, 1, 8, '小提琴演奏', 10, 1000, '8.ZhangJunwen.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(901, 1, 9, '小提琴演奏', 3, 1000, '9.Xue Haoming.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(902, 2, 9, '小提琴演奏', 4, 1500, '9.Xue Haoming.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(903, 3, 9, '小提琴演奏', 7, 1000, '9.Xue Haoming.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(1001, 1, 10, '小提琴演奏', 9, 1000, '10.He Weilin.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(1101, 1, 11, '小提琴演奏', 3, 1000, '11.Lin Liheng.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(1102, 2, 11, '小提琴演奏', 6, 1500, '11.Lin Liheng.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(1201, 1, 12, '小提琴演奏', 9, 1000, '12.Liang Jinwei.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
-(2501, 4, 5, '弦樂室內樂', 10, 8000, 'string_chambermusic.webp', '2024-02-17', '2024-03-23', '週六15:00-17:00', '', '1', '', '學費為一期（6週，共12小時）費用', 1, NULL),
-(2601, 4, 3, '樂團片段曲目選粹（弦樂）', 12, 10000, 'orchestra_excerpts.jpeg', '2024-03-15', '2024-05-10', '週日19:00-21:00', '', '1', '1.藉由各種小型室內組合,增進學生對室內樂之了解與興趣 2.為提昇自我演奏能力,並進而獲得與他人切磋之機會', '學費為一期（8週，共16小時）費用', 1, NULL),
-(2701, 4, 9, '小提琴影視配樂片段選粹', 15, 10000, 'movie_soundtrack_class.jpg', '2024-04-10', '2024-05-29', '週三19:00-21:00', '', '3', '以輕鬆的學習氛圍，嚴謹的技巧訓練，帶領學員建立基本演奏能力。搭配各種不同風格之曲目：古典、民謠、流行、電影配樂、重奏合奏…等，提升對樂器的興趣，進而享受演奏樂趣。', '學費為一期（8週，共16小時）費用', 1, NULL),
-(5001, 5, 13, '鹿特丹管弦樂團樂團片段大師班（個別指導生）', 10, 5400, 'orchestra_masterclass.jpeg', '2024-02-17', '2024-03-09', '週六18:30-21:30', '', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '學費為一系列（4週，共12小時）費用，每人約15分鐘個別指導時間', 1, NULL),
-(5002, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 25, 900, 'orchestra_masterclass.jpeg', '2024-02-17', '2024-03-09', '週六18:30-21:30', '', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為一系列（4週，共12小時）費用', 1, NULL),
-(5003, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-02-17', '2024-02-17', '週六18:30-21:30', '', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第一週2024-02-17的課程', 1, NULL),
-(5004, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-02-24', '2024-02-24', '週六18:30-21:30', '', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第二週2024-02-24的課程', 1, NULL),
-(5005, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-03-02', '2024-03-02', '週六18:30-21:30', '', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第三週2024-03-02的課程', 1, NULL),
-(5006, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-03-09', '2024-03-09', '週六18:30-21:30', '', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第四週2024-03-09的課程', 1, NULL),
-(5101, 5, 13, 'Sebastian Müller小提琴大師班（個別指導生）', 8, 1800, 'sebastian_mueller.jpeg', '2024-03-31', '2024-03-31', '週日14:00-17:00', '', '1', '-對於學生和進階學生： 學生除了準備密集的音樂會、比賽及考試之外，該課程還提供給學生許多機會，來利用新的動作和思考模式，取代目前的不足之處。  -對於教師及專業人士： Sebastian Müller因培訓年輕學生，以及在英國各音樂學院和大學舉辦多場以實踐為導向的講座而聲名大噪。因此，該課程為教師們提供了進修的機會，並為自己的教學獲得新的知識；而專業演奏者在這裡可以找到，進一步發展小提琴技巧、改善演奏姿勢和技巧等各方面問題的專業建議。', '學費為單次大師班（共3小時）費用，每人約20分鐘個別指導時間', 1, NULL),
-(5102, 5, 13, 'Sebastian Müller小提琴大師班（旁聽生）', 15, 300, 'sebastian_mueller.jpeg', '2024-03-31', '2024-03-31', '14:00', '17:00', '1', '-對於學生和進階學生： 學生除了準備密集的音樂會、比賽及考試之外，該課程還提供給學生許多機會，來利用新的動作和思考模式，取代目前的不足之處。  -對於教師及專業人士： Sebastian Müller因培訓年輕學生，以及在英國各音樂學院和大學舉辦多場以實踐為導向的講座而聲名大噪。因此，該課程為教師們提供了進修的機會，並為自己的教學獲得新的知識；而專業演奏者在這裡可以找到，進一步發展小提琴技巧、改善演奏姿勢和技巧等各方面問題的專業建議。', '學費為單次旁聽（共3小時）費用', 1, NULL),
-(5105, 4, 7, '小提琴檢定課程（英國皇家）', 15, 15000, '1707035093.webp', '2024-03-29', '2024-05-17', '19:00', '21:00', '1', '八級以上文憑檢定準備課程 共8週 16小時', '', 1, NULL),
-(5106, 3, 3, 'TEST3', 5, 4000, 'PIC', 'TBD', 'TBD', '44', '', '3', '', '', 0, NULL),
-(5107, 1, 9, '個別課10堂優惠', 3, 9500, '1707035219.jpg', '', '', '', '', '1', '', '原價一小時1000元，10小時10000，此為特惠課程9500元。', 1, NULL),
-(5108, 3, 2, 'fffff', 7, 899, '', 'TBD', 'TBD', '44', '', '2', '', '', 1, NULL),
-(5109, 3, 3, 'fffffff', 8, 1200, '1706852850.png', 'TBD', 'TBD', '44', '', '2', '888888', '5555', 1, NULL),
-(5110, 3, 3, 'fffffff', 8, 1200, '1706852926.png', 'TBD', 'TBD', '44', '', '2', '888888', '5555', 0, NULL),
-(5111, 4, 3, '弦樂四重奏', 12, 4000, '', '2024-02-21', '2024-02-27', '', '', '1', '', '', 1, NULL),
-(5112, 3, 3, 'TEST4', 6, 899, '1706887880.png', '02/06/2024', '02/22/2024', '12:00', '17:00', '3', 'test', 'tt', 0, NULL),
-(5113, 2, 2, 'test5', 5, 1200, '1706976569.png', '2024-02-18', '2024-02-24', '', '', '2', '', '', 1, NULL),
-(5114, 2, 6, 'text6', 8, 4000, '1706976404.png', '2024-02-14', '2024-02-27', '', '', '2', '', '', 1, NULL),
-(5115, 5, 3, '個別課', 6, 2400, '1706977354.png', '2024-02-12', '2024-02-24', '', '', '1', '', '', 1, NULL),
-(5116, 4, 4, 'test6', 12, 8000, '1706949517.png', '2024-02-21', '2024-02-28', '12:00', '14:00', '2', '', '', 0, NULL),
-(5117, 2, 3, 'test7', 5, 1200, '1706944310.png', '', '', '', '', '2', '', '', 0, NULL),
-(5118, 2, 3, 'test8', 12, 5000, '1706947084.png', '', '', '', '', '2', '', '', 0, NULL),
-(5119, 2, 2, '羅筠庭', 2, 4000, '1706950330.png', '', '', '', '', '3', '', '', 0, NULL),
-(5120, 2, 3, 'test9', 3, 5000, '1706953038.png', '02/10/2024', '2024-02-22', '', '', '2', 'dd', 'tired', 0, NULL),
-(5121, 2, 5, 'voice', 3, 6000, '1706953150.png', '', '', '', '', '1', '', '', 0, NULL),
-(5122, 5, 5, 'voice6', 8, 4000, '1706954095.png', '02/10/2024', '2024-02-22', '14:00', '15:00', '3', '', '', 0, NULL),
-(5123, 3, 2, 'test10', 5, 1200, '1706954057.png', '', '', '', '', '2', '', '', 0, NULL),
-(5124, 1, 3, 'text10', 6, 4000, '1706976213.png', '', '', '', '', '3', '', '', 1, NULL),
-(5125, 4, 3, '444vvv', 12, 6000, '1706976368.png', '2024-02-24', '2024-03-30', '14:00', '15:00', '3', '', '', 1, NULL);
+(1001, 1, 1, '小提琴演奏', 8, 1000, '1706930755.jpg', '', '', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1002, 2, 1, '小提琴演奏', 14, 1500, '1.Lin Wenxi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1003, 1, 2, '小提琴演奏', 6, 1000, '2.Wu Junyan.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1004, 2, 2, '小提琴演奏', 4, 1500, '2.Wu Junyan.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1005, 1, 3, '小提琴演奏', 2, 1000, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1006, 2, 3, '小提琴演奏', 4, 1500, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1007, 3, 3, '小提琴演奏', 6, 2000, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1008, 2, 3, '小提琴演奏', 6, 1800, '3.Huang Junxian.jpg', 'TBD', 'TBD', '', '', '2', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1009, 1, 4, '小提琴演奏', 12, 1000, '4.Xu Ziling.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1010, 1, 5, '小提琴演奏', 4, 1000, '5.Yang Yusi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1011, 2, 5, '小提琴演奏', 3, 1500, '5.Yang Yusi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1012, 3, 5, '小提琴演奏', 6, 2000, '5.Yang Yusi.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1013, 1, 6, '小提琴演奏', 12, 1000, '6.Chen Wanyun.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1014, 1, 7, '小提琴演奏', 4, 1000, '7.Peng Zhixuan.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1015, 1, 8, '小提琴演奏', 10, 1000, '8.ZhangJunwen.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1016, 1, 9, '小提琴演奏', 3, 1000, '9.Xue Haoming.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1017, 2, 9, '小提琴演奏', 4, 1500, '9.Xue Haoming.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1018, 3, 9, '小提琴演奏', 7, 1000, '9.Xue Haoming.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1019, 1, 10, '小提琴演奏', 9, 1000, '10.He Weilin.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1020, 1, 11, '小提琴演奏', 3, 1000, '11.Lin Liheng.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1021, 2, 11, '小提琴演奏', 6, 1500, '11.Lin Liheng.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1022, 1, 12, '小提琴演奏', 9, 1000, '12.Liang Jinwei.jpg', 'TBD', 'TBD', '', '', '1', '', '學費為單堂一小時費用，教師和學生自訂上課時間', 1, NULL),
+(1023, 4, 5, '弦樂室內樂', 10, 8000, 'string_chambermusic.webp', '2024-02-17', '2024-03-23', '15:00', '17:00', '1', '', '學費為一期（6週，共12小時）費用', 1, NULL),
+(1024, 4, 3, '樂團片段曲目選粹（弦樂）', 12, 10000, 'orchestra_excerpts.jpeg', '2024-03-15', '2024-05-10', '19:00', '21:00', '1', '1.藉由各種小型室內組合,增進學生對室內樂之了解與興趣 2.為提昇自我演奏能力,並進而獲得與他人切磋之機會', '學費為一期（8週，共16小時）費用', 1, NULL),
+(1025, 4, 9, '小提琴影視配樂片段選粹', 15, 10000, 'movie_soundtrack_class.jpg', '2024-04-10', '2024-05-29', '19:00', '21:00', '3', '以輕鬆的學習氛圍，嚴謹的技巧訓練，帶領學員建立基本演奏能力。搭配各種不同風格之曲目：古典、民謠、流行、電影配樂、重奏合奏…等，提升對樂器的興趣，進而享受演奏樂趣。', '學費為一期（8週，共16小時）費用', 1, NULL),
+(1026, 5, 13, '鹿特丹管弦樂團樂團片段大師班（個別指導生）', 10, 5400, 'orchestra_masterclass.jpeg', '2024-02-17', '2024-03-09', '18:30', '20:30', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '學費為一系列（4週，共12小時）費用，每人約15分鐘個別指導時間', 1, NULL),
+(1027, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 25, 900, 'orchestra_masterclass.jpeg', '2024-02-17', '2024-03-09', '18:30', '20:30', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為一系列（4週，共12小時）費用', 1, NULL),
+(1028, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-02-17', '2024-02-17', '18:30', '20:30', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第一週2024-02-17的課程', 1, NULL),
+(1029, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-02-24', '2024-02-24', '18:30', '20:30', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第二週2024-02-24的課程', 1, NULL),
+(1030, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-03-02', '2024-03-02', '18:30', '20:30', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第三週2024-03-02的課程', 1, NULL),
+(1031, 5, 13, '鹿特丹管弦樂團樂團片段大師班（旁聽生）', 5, 250, 'orchestra_masterclass.jpeg', '2024-03-09', '2024-03-09', '18:30', '20:30', '1', '「樂團片段」是交響樂團在招考團員時的必備項目，目的是讓評審評估演奏者的反應能力、音樂詮釋及對樂譜的熟悉度。成立於1918年的鹿特丹愛樂管絃樂團，素來以充滿張力的表演風格、備受讚譽的錄音作品，以及創新的觀眾互動手法而聞名，並因此在歐洲一流樂團中佔有一席之地。本中心特別邀請鹿特丹愛樂管絃樂團第二小提琴首席緁琪莉亞・齊亞諾 （Cecilia ZIANO）擔任樂團片段大師班指導老師。', '旁聽費為單次旁聽（共3小時）費用，此為第四週2024-03-09的課程', 1, NULL),
+(1032, 5, 13, 'Sebastian Müller小提琴大師班（個別指導生）', 8, 1800, 'sebastian_mueller.jpeg', '2024-03-31', '2024-03-31', '14:00', '17:00', '1', '-對於學生和進階學生： 學生除了準備密集的音樂會、比賽及考試之外，該課程還提供給學生許多機會，來利用新的動作和思考模式，取代目前的不足之處。  -對於教師及專業人士： Sebastian Müller因培訓年輕學生，以及在英國各音樂學院和大學舉辦多場以實踐為導向的講座而聲名大噪。因此，該課程為教師們提供了進修的機會，並為自己的教學獲得新的知識；而專業演奏者在這裡可以找到，進一步發展小提琴技巧、改善演奏姿勢和技巧等各方面問題的專業建議。', '學費為單次大師班（共3小時）費用，每人約20分鐘個別指導時間', 1, NULL),
+(1033, 5, 13, 'Sebastian Müller小提琴大師班（旁聽生）', 15, 300, 'sebastian_mueller.jpeg', '2024-03-31', '2024-03-31', '14:00', '17:00', '1', '-對於學生和進階學生： 學生除了準備密集的音樂會、比賽及考試之外，該課程還提供給學生許多機會，來利用新的動作和思考模式，取代目前的不足之處。  -對於教師及專業人士： Sebastian Müller因培訓年輕學生，以及在英國各音樂學院和大學舉辦多場以實踐為導向的講座而聲名大噪。因此，該課程為教師們提供了進修的機會，並為自己的教學獲得新的知識；而專業演奏者在這裡可以找到，進一步發展小提琴技巧、改善演奏姿勢和技巧等各方面問題的專業建議。', '學費為單次旁聽（共3小時）費用', 1, NULL),
+(1034, 4, 7, '小提琴檢定課程（英國皇家）', 15, 15000, '1707035093.webp', '2024-03-29', '2024-05-17', '19:00', '21:00', '1', '八級以上文憑檢定準備課程 共8週 16小時', '', 1, NULL),
+(1035, 1, 9, '個別課10堂優惠', 3, 9500, '1707035219.jpg', '', '', '', '', '1', '', '原價一小時1000元，10小時10000，此為特惠課程9500元。', 1, NULL),
+(1036, 4, 3, '弦樂四重奏', 12, 4000, '', '2024-02-21', '2024-02-27', '', '', '1', '', '', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -155,7 +137,7 @@ INSERT INTO `course_category_groups` (`group_id`, `group_name`) VALUES
 CREATE TABLE `course_like` (
   `c_like_id` int(3) NOT NULL,
   `user_id` int(3) NOT NULL,
-  `course_id` int(2) NOT NULL
+  `course_id` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -163,17 +145,17 @@ CREATE TABLE `course_like` (
 --
 
 INSERT INTO `course_like` (`c_like_id`, `user_id`, `course_id`) VALUES
-(1, 3, 503),
-(2, 3, 304),
-(3, 15, 1101),
-(4, 15, 304),
-(5, 15, 2501),
-(6, 19, 2501),
-(7, 7, 5101),
-(8, 6, 5001),
-(9, 6, 2701),
-(10, 6, 2701),
-(11, 3, 2701);
+(1, 3, 1012),
+(2, 3, 1008),
+(3, 15, 1019),
+(4, 15, 1008),
+(5, 15, 1023),
+(6, 19, 1023),
+(7, 7, 1032),
+(8, 6, 1012),
+(9, 6, 1015),
+(10, 6, 1024),
+(11, 3, 1015);
 
 -- --------------------------------------------------------
 
@@ -447,23 +429,23 @@ CREATE TABLE `order_detail` (
 
 INSERT INTO `order_detail` (`detail_id`, `order_id`, `course_product_id`, `num`) VALUES
 (1, 2024010101, 1, 1),
-(2, 2024010102, 101, 1),
+(2, 2024010102, 1001, 1),
 (3, 2024010201, 2, 2),
-(4, 2024010202, 202, 1),
+(4, 2024010202, 1002, 1),
 (5, 2024010301, 3, 3),
-(6, 2024010302, 303, 1),
+(6, 2024010302, 1003, 1),
 (7, 2024010401, 4, 4),
-(8, 2024010402, 401, 1),
+(8, 2024010402, 1004, 1),
 (9, 2024010501, 5, 5),
-(10, 2024010502, 2501, 1),
+(10, 2024010502, 1005, 1),
 (11, 2024010601, 6, 4),
-(12, 2024010602, 5002, 1),
+(12, 2024010602, 1006, 1),
 (13, 2024010701, 7, 3),
-(14, 2024010702, 5003, 1),
+(14, 2024010702, 1007, 1),
 (15, 2024010801, 8, 2),
-(16, 2024010802, 5101, 1),
+(16, 2024010802, 1008, 1),
 (17, 2024010901, 9, 1),
-(18, 2024010902, 5102, 1);
+(18, 2024010902, 1009, 1);
 
 -- --------------------------------------------------------
 
@@ -503,7 +485,7 @@ CREATE TABLE `product` (
   `product_category_id` int(2) NOT NULL,
   `name` varchar(50) NOT NULL,
   `brand` varchar(30) NOT NULL,
-  `size` int(1) DEFAULT NULL,
+  `size` varchar(20) DEFAULT NULL,
   `top` varchar(10) DEFAULT NULL,
   `back_and_sides` varchar(10) DEFAULT NULL,
   `neck` varchar(10) DEFAULT NULL,
@@ -513,7 +495,7 @@ CREATE TABLE `product` (
   `num` int(3) NOT NULL,
   `price` int(5) NOT NULL,
   `status` int(1) NOT NULL,
-  `img` varchar(20) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
   `introduction` varchar(150) NOT NULL,
   `valid` int(1) NOT NULL,
   `group_id` int(11) DEFAULT NULL
@@ -524,39 +506,41 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_category_id`, `name`, `brand`, `size`, `top`, `back_and_sides`, `neck`, `fingerboard`, `bow`, `strings`, `num`, `price`, `status`, `img`, `introduction`, `valid`, `group_id`) VALUES
-(1, 1, 'Conrad Götz Heritage Cantonate 136 Violin', 'Conrad Götz', 4, '雲杉木', '楓木', '楓木', '烏木', '', '', 3, 86000, 1, '17179413_800.jpg', '', 0, 5),
-(2, 1, 'Stentor SR1500 Violin Student II 4/4', 'Stentor', 4, '銀杉', '楓木', '楓木', '烏木', '', '', 1, 7500, 1, '6746845.jpg', 'Size: 4/4 ,Solid spruce top ,Solid maple body ,Ebony pegs and fingerboard ,Hardwood chinrest ,Includes case and bow', 0, 4),
-(3, 1, 'Stentor SR1864 Verona Violin 4/4', 'Stentor', 4, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 19000, 1, '16198621_800.jpg', 'Hand-crafted ,Solid spruce top ,Solid beautiful flamed maple sides ,Solid beautiful flamed maple bottom ,Solid maple neck ,Shellax painting ,Ebony fin', 1, 1),
-(4, 1, 'Stentor SR1542 Violin Graduate 4/4', 'Stentor', 4, '銀杉', '硬楓', '榆木', '烏木', '', '', 1, 9500, 1, '12809207_800.jpg', 'Size: 4/4 ,Solid spruce top ,Solid maple body ,Maple neck ,Ebony pegs and fingerboard ,Hardwood chinrest ,Metal tailpiece with 4 fine tuners ,Nylon st', 1, 1),
-(5, 1, 'Franz Sandner Jubilee Orchestra Violin 4/4', 'Franz Sandner', 4, '雲杉木', '楓木', '榆木', '烏木', '', '', 1, 39000, 1, '10617291_800.jpg', 'Size: 4/4,Produced for the 90-year company anniversary of Franz Sandner,German style,Stradivari model,Flamed maple back,Solid spruce top,Ebony fitting', 1, 1),
-(6, 1, 'Conrad Götz Signature Bohemia 108 Violin', 'Conrad Götz', 4, '雲杉木', '榆木', '榆木', '烏木', '', '', 1, 43000, 1, '15104143_800.jpg', 'Size: 4/4 ,Noticeably easier playability and optimised resonance behaviour ,10-15% less weight ,Optimised weight distribution ,Thinner and more elegan', 1, 1),
-(7, 1, 'Yamaha V 20 G Violin 4/4', 'Yamaha', 4, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 55000, 1, '862239_800.jpg', 'Solid wood Guarneri model,Top: Solid spruce,Back: Solid, beautifully flamed maple back,Applied by hand, shaded oil-finish,Fingerboard: Ebony,Tuning pe', 1, 1),
-(8, 1, 'Karl Höfner Guadagnini 4/4 Violin Outfit', 'Karl Höfner', 4, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 58000, 1, '12235832_800.jpg', 'Karl Höfner H115-BG-V 4/4 violin ,Guadagnini model ,Instrument for high demands ,Handcrafted from selected European tone woods (spruce top, maple back', 1, 1),
-(9, 1, 'Yamaha V5 SC44 Violin 4/4', 'Yamaha', 4, '銀杉', '楓木', '楓木', '硬楓', '', '', 3, 15000, 1, '14389014_800.jpg', 'Solid wood,Hand-carved spruce top,Maple back,Oil-based finish applied with a brush,Ebony fingerboard,Ebony pegs,Wittner tailpiece with fine tuners,Dad', 1, 1),
-(10, 1, 'Karl Höfner Presto 4/4 Violin Outfit', 'Karl Höfner', 4, '雲杉木', '硬楓', '硬楓', '烏木', '', '', 1, 32000, 1, '13571046_800.jpg', 'Size: 4/4 ,Karl Höfner H11E-V violin ,Solid wood ,Spruce top ,Back, sides and neck of lightly flamed maple ,Antique varnish with golden brown spirit v', 1, 1),
-(11, 1, 'Yamaha V10 SG 4/4 OV', 'Yamaha', 4, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 46000, 1, '7405225_800.jpg', 'Solid wood Stradivari model V10G ,With case and bow ,Top: Solid spruce ,Back: Solid, beautifully flamed back ,Shaded, hand applied oil-based finish ,F', 1, 1),
-(12, 1, 'Karl Höfner Allegro 3/4 Violin Outfit', 'Karl Höfner', 3, '銀杉', '榆木', '榆木', '硬楓', '', '', 1, 25000, 1, '14362133_800.jpg', 'Size: 3/4 ,Karl Höfner H9-V violin ,Made completely of solid wood ,Premium flamed maple ,Selected spruce top ,Antique hand varnish based on natural re', 1, 1),
-(13, 1, 'Karl Höfner Presto 3/4 Violin Outfit', 'Karl Höfner', 3, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 30000, 1, '17663193_800.jpg', 'Size: 3/4,Spruce top,Slightly flamed maple back, sides and neck,Antique varnish with golden brown spirit varnish,Wittner fine-tuning tailpiece,D\'Addar', 1, 1),
-(14, 1, 'Rainer W. Leonhardt No. 100/2 Master Violin 4/4', 'Rainer W.', 4, '雲杉木', '榆木', '榆木', '檀木', '', '', 1, 130000, 1, '18346484_800.jpg', 'Size: 4/4,Made of high-quality aged tone woods,Solid spruce top,Flamed solid maple back and maple sides,Ebony fingerboard,Ebony tuning pegs,Ebony chin', 1, 1),
-(15, 1, 'Rainer W. Leonhardt No. 110/1 Master Violin 4/4', 'Rainer W.', 4, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 113500, 1, '18526933_800.jpg', 'Size: 4/4 ,Made of high-quality aged tone woods ,Solid spruce top ,Flamed solid maple back and maple sides ,Ebony fingerboard ,Boxwood tuning pegs ,Bo', 1, 1),
-(16, 1, 'Gewa Ideale Violin 4/4', 'Gewa', 4, '雲杉木', '榆木', '榆木', '烏木', '', '', 1, 9800, 1, '17447488_800.jpg', 'Size: 4/4 ,Fully solid violin made of European tonewoods ,Medium flamed ,Solid European spruce top ,Solid European maple back and sides ,Ebony fingerb', 1, 1),
-(17, 1, 'Gewa Germania 11 Paris Ant. Violin', 'Gewa', 4, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 30000, 1, '16115651_800.jpg', 'Size: 4/4 ,Selected spruce top, worked on for tonal quality ,Sides and bottom made of selected European sycamore maple ,Ebony fittings ,Wittner fine t', 1, 1),
-(18, 1, 'Gewa Maestro 6 Antiqued Violin 3/4', 'Gewa', 3, '銀杉', '楓木', '楓木', '烏木', '', '', 1, 18000, 1, '13780886_800.jpg', 'Size: 3/4 ,Top: Solid spruce ,Solid maple body ,Flamed bottom ,Ebony fingerboard (Diospyros crassiflora) ,Ebony pegs (Diospyros crassiflora) ,Fine tun', 1, 1),
-(19, 1, 'Yamaha V7 SG34 Violin 3/4 B-Stock', 'Yamaha', 3, '銀杉', '楓木', '楓木', '檀木', '', '', 1, 23000, 1, '111069.jpg', 'Built completely out of solid wood,Hand-carved spruce top,Maple back,With brush applied oil paint,Fretboard: Ebony,Wittner fine tuning tailpiece,Dadda', 1, 1),
-(20, 2, 'Roth & Junius RJVC Violin Case Legato 4/4', 'Roth & Junius', 4, '', '', '', '', '', '', 1, 2300, 1, '18878532_800.jpg', 'Suitable for 4/4 violin,Sturdy rectangular violin case with 2 accessory compartments,Shell / Core made of plywood,Suspension system Hygrometer,4 Swive', 1, 2),
-(21, 2, 'Roth & Junius RJVC Violin Case Grandioso 4/4', 'Roth & Junius', 4, '', '', '', '', '', '', 1, 3000, 1, '18878647_800.jpg', 'Extremely sturdy rectangular violin case with 3 accessory compartments, equipped to the highest standard ,Shells / core made of plywood ,Suspension sy', 1, 2),
-(22, 2, 'Gewa Pure Violin Case 2.4 GY 4/4', 'Gewa', 4, '', '', '', '', '', '', 1, 8400, 1, '14453644_800.jpg', 'Rectangular violin case ,Outer shell made of polycarbonate ,Padded suspension system ,Flexible Gewa bow bridge ,Gewa swivel-type bow holder ,Removable', 1, 2),
-(23, 3, 'Roth & Junius RJSW-01S Snakewood Violin Bow', 'Roth & Junius', 4, '', '', '', '', '蛇紋木', '', 1, 4100, 1, '273873.jpg', 'Silver-wrapped violin bow with round snakewood stick and snakewood frog ,Wood grain may vary', 1, 3),
-(24, 3, 'Karl Höfner H8/4 C 4/4 Cello Bow', 'Karl Höfner', 4, '', '', '', '', '烏木', '', 1, 13000, 1, '247536.jpg', 'Pernambuco stick, round ,Nickel silver mounting ,Ebony frog with simple eye ,Capsule button', 1, 3),
-(25, 3, 'Artino Violin Bow 4/4 Special Edition', 'Artino', 0, '', '', '', '', '烏木', '', 1, 1000, 1, '14984505_800.jpg', 'Special Edition for Thomann ,Fiberglass rod ,Ebony frog ,Nickel mountings', 1, 3),
-(26, 4, 'Cecilia Violin Rosin Sanctus', 'Cecilia', 0, '', '', '', '', '', '', 1, 2300, 1, '16228436_800.jpg', 'Consists of a harder outer layer with a softer inner core ,Incl. Cecilia Rosin Spreader', 0, 4),
-(27, 4, 'Gewa Rosin Karwendel', 'Gewa', 0, '', '', '', '', '', '', 1, 80, 1, '9712940_800.jpg', 'Resin from Karwendel ,In cork cover', 0, 4),
-(28, 4, 'Cecilia Violin Rosin Small Solo', 'Cecilia', 0, '', '', '', '', '', '', 1, 1000, 1, '16222601_800.jpg', 'For a pure, clean and defined sound ,High dynamic range ,Ideal for soloists and large halls ,Each piece Andrea Rosin Kolofon is handmade from finest i', 0, 4),
-(29, 4, 'Leatherwood Bespoke Rosin Violin Supple', 'Leatherwood', 0, '', '', '', '', '', '', 1, 2400, 1, '16783429_800.jpg', 'Mixture: Supple ,For soft and full response and a warm, radiant tone', 0, 4),
-(30, 4, 'Cecilia Violin Signature Formula', 'Cecilia', 0, '', '', '', '', '', '', 2, 1900, 1, '15328097_800.jpg', 'Unique bowing experience with a clearly defined articulation ,Full, rich tone without too much grip ,Produced by using a new liquid mixing method ,Eac', 0, 4),
-(31, 3, 'Artino Violin Bow 3/4 Special Edition', 'Artino', 0, '', '', '', '', '烏木', '', 1, 1000, 1, '10079215_800.jpg', 'Special Edition for Thomann ,Fiberglass stick ,Ebony frog ,Nickel mountings', 0, NULL),
-(32, 1, 'Stentor SR1500 Violin Student II 3/4', 'Stentor', 3, '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 7300, 1, '', 'Size: 3/4 ,Model: Student II ,Solid spruce top ,Solid maple body ,Pegs & fingerboard made of ebony (Diospyros crassiflora) ,Chin rest made of hardwood', 0, 1),
-(33, 4, 'sad', '00', 0, '', '', '', '', '', NULL, 35, 0, 0, NULL, '', 1, 1);
+(1, 1, 'Conrad Götz Heritage Cantonate 136 Violin', 'Conrad Götz', '4/4', '雲杉木', '楓木', '楓木', '檀木', '', '', 1, 85000, 1, '17179413_800.jpg', 'Size: 4/4 ,Premium instrument ,Balanced throughout the entire sound spectrum ,Bottom, neck and sides made of European maple ,Top made of European spru', 1, 5),
+(2, 1, 'Stentor SR1500 Violin Student II 4/4', 'Stentor', '4/4', '銀杉', '楓木', '楓木', '烏木', '', '', 2, 7499, 1, '6746845.jpg', 'Size: 4/4 ,Solid spruce top ,Solid maple body ,Ebony pegs and fingerboard ,Hardwood chinrest ,Includes case and bow', 1, 4),
+(3, 1, 'Stentor SR1864 Verona Violin 4/4', 'Stentor', '4/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 7, 18999, 1, '8129134_800.jpg', 'Hand-crafted ,Solid spruce top ,Solid beautiful flamed maple sides ,Solid beautiful flamed maple bottom ,Solid maple neck ,Shellax painting ,Ebony fin', 1, 1),
+(4, 1, 'Stentor SR1542 Violin Graduate 4/4', 'Stentor', '4/4', '銀杉', '硬楓', '榆木', '烏木', '', '', 6, 9499, 1, '16198621_800.jpg', 'Size: 4/4 ,Solid spruce top ,Solid maple body ,Maple neck ,Ebony pegs and fingerboard ,Hardwood chinrest ,Metal tailpiece with 4 fine tuners ,Nylon st', 1, 1),
+(5, 1, 'Franz Sandner Jubilee Orchestra Violin 4/4', 'Franz Sandner', '4/4', '雲杉木', '楓木', '榆木', '烏木', '', '', 2, 39000, 1, '12809207_800.jpg', 'Size: 4/4,Produced for the 90-year company anniversary of Franz Sandner,German style,Stradivari model,Flamed maple back,Solid spruce top,Ebony fitting', 1, 1),
+(6, 1, 'Conrad Götz Signature Bohemia 108 Violin', 'Conrad Götz', '4/4', '雲杉木', '榆木', '榆木', '烏木', '', '', 3, 43000, 1, '10617291_800.jpg', 'Size: 4/4 ,Noticeably easier playability and optimised resonance behaviour ,10-15% less weight ,Optimised weight distribution ,Thinner and more elegan', 1, 1),
+(7, 1, 'Yamaha V 20 G Violin 4/4', 'Yamaha', '4/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 10, 55000, 1, '15104143_800.jpg', 'Solid wood Guarneri model,Top: Solid spruce,Back: Solid, beautifully flamed maple back,Applied by hand, shaded oil-finish,Fingerboard: Ebony,Tuning pe', 1, 1),
+(8, 1, 'Karl Höfner Guadagnini 4/4 Violin Outfit', 'Karl Höfner', '4/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 4, 58000, 1, '862239_800.jpg', 'Karl Höfner H115-BG-V 4/4 violin ,Guadagnini model ,Instrument for high demands ,Handcrafted from selected European tone woods (spruce top, maple back', 1, 1),
+(9, 1, 'Yamaha V5 SC44 Violin 4/4', 'Yamaha', '4/4', '銀杉', '楓木', '楓木', '硬楓', '', '', 5, 15000, 1, '12235832_800.jpg', 'Solid wood,Hand-carved spruce top,Maple back,Oil-based finish applied with a brush,Ebony fingerboard,Ebony pegs,Wittner tailpiece with fine tuners,Dad', 1, 1),
+(10, 1, 'Karl Höfner Presto 4/4 Violin Outfit', 'Karl Höfner', '4/4', '雲杉木', '硬楓', '硬楓', '烏木', '', '', 8, 32000, 1, '7405225_800.jpg', 'Size: 4/4 ,Karl Höfner H11E-V violin ,Solid wood ,Spruce top ,Back, sides and neck of lightly flamed maple ,Antique varnish with golden brown spirit v', 1, 1),
+(11, 1, 'Yamaha V10 SG 4/4 OV', 'Yamaha', '4/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 46000, 1, '14362133_800.jpg', 'Solid wood Stradivari model V10G ,With case and bow ,Top: Solid spruce ,Back: Solid, beautifully flamed back ,Shaded, hand applied oil-based finish ,F', 1, 1),
+(12, 1, 'Karl Höfner Allegro 3/4 Violin Outfit', 'Karl Höfner', '3/4', '銀杉', '榆木', '榆木', '硬楓', '', '', 3, 25000, 1, '18346484_800.jpg', 'Size: 3/4 ,Karl Höfner H9-V violin ,Made completely of solid wood ,Premium flamed maple ,Selected spruce top ,Antique hand varnish based on natural re', 1, 1),
+(13, 1, 'Karl Höfner Presto 3/4 Violin Outfit', 'Karl Höfner', '3/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 30000, 1, '18526933_800.jpg', 'Size: 3/4,Spruce top,Slightly flamed maple back, sides and neck,Antique varnish with golden brown spirit varnish,Wittner fine-tuning tailpiece,D\'Addar', 1, 1),
+(14, 1, 'Rainer W. Leonhardt No. 100/2 Master Violin 4/4', 'Rainer W.', '4/4', '雲杉木', '榆木', '榆木', '檀木', '', '', 1, 130000, 1, '18346484_800.jpg', 'Size: 4/4,Made of high-quality aged tone woods,Solid spruce top,Flamed solid maple back and maple sides,Ebony fingerboard,Ebony tuning pegs,Ebony chin', 1, 1),
+(15, 1, 'Rainer W. Leonhardt No. 110/1 Master Violin 4/4', 'Rainer W.', '4/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 14, 113500, 1, '17447488_800.jpg', 'Size: 4/4 ,Made of high-quality aged tone woods ,Solid spruce top ,Flamed solid maple back and maple sides ,Ebony fingerboard ,Boxwood tuning pegs ,Bo', 1, 1),
+(16, 1, 'Gewa Ideale Violin 4/4', 'Gewa', '4/4', '雲杉木', '榆木', '榆木', '烏木', '', '', 1, 9800, 1, '16115651_800.jpg', 'Size: 4/4 ,Fully solid violin made of European tonewoods ,Medium flamed ,Solid European spruce top ,Solid European maple back and sides ,Ebony fingerb', 1, 1),
+(17, 1, 'Gewa Germania 11 Paris Ant. Violin', 'Gewa', '4/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 15, 30000, 1, '13780886_800.jpg', 'Size: 4/4 ,Selected spruce top, worked on for tonal quality ,Sides and bottom made of selected European sycamore maple ,Ebony fittings ,Wittner fine t', 1, 1),
+(18, 1, 'Gewa Maestro 6 Antiqued Violin 3/4', 'Gewa', '3/4', '銀杉', '楓木', '楓木', '烏木', '', '', 4, 18000, 1, '111069.jpg', 'Size: 3/4 ,Top: Solid spruce ,Solid maple body ,Flamed bottom ,Ebony fingerboard (Diospyros crassiflora) ,Ebony pegs (Diospyros crassiflora) ,Fine tun', 1, 1),
+(19, 1, 'Yamaha V7 SG34 Violin 3/4 B-Stock', 'Yamaha', '3/4', '銀杉', '楓木', '楓木', '檀木', '', '', 1, 23000, 1, '18878532_8001.jpg', 'Built completely out of solid wood,Hand-carved spruce top,Maple back,With brush applied oil paint,Fretboard: Ebony,Wittner fine tuning tailpiece,Dadda', 1, 1),
+(20, 2, 'Roth & Junius RJVC Violin Case Legato 4/4', 'Roth & Junius', '4/4', '', '', '', '', '', '', 4, 2300, 1, '18878732_8001.jpg', 'Suitable for 4/4 violin,Sturdy rectangular violin case with 2 accessory compartments,Shell / Core made of plywood,Suspension system Hygrometer,4 Swive', 1, 2),
+(21, 2, 'Roth & Junius RJVC Violin Case Grandioso 4/4', 'Roth & Junius', '4/4', '', '', '', '', '', '', 8, 3000, 1, '14453654_8001.jpg', 'Extremely sturdy rectangular violin case with 3 accessory compartments, equipped to the highest standard ,Shells / core made of plywood ,Suspension sy', 1, 2),
+(22, 2, 'Gewa Pure Violin Case 2.4 GY 4/4', 'Gewa', '4/4', '', '', '', '', '', '', 7, 8400, 1, '5360660_8001.jpg', 'Rectangular violin case ,Outer shell made of polycarbonate ,Padded suspension system ,Flexible Gewa bow bridge ,Gewa swivel-type bow holder ,Removable', 1, 2),
+(23, 3, 'Roth & Junius RJSW-01S Snakewood Violin Bow', 'Roth & Junius', '4/4', '', '', '', '', '蛇紋木', '', 3, 4100, 1, '2475361.jpg', 'Silver-wrapped violin bow with round snakewood stick and snakewood frog ,Wood grain may vary', 1, 3),
+(24, 3, 'Karl Höfner H8/4 C 4/4 Cello Bow', 'Karl Höfner', '4/4', '', '', '', '', '烏木', '', 1, 13000, 1, '14984505_8001.jpg', 'Pernambuco stick, round ,Nickel silver mounting ,Ebony frog with simple eye ,Capsule button', 1, 3),
+(25, 3, 'Artino Violin Bow 4/4 Special Edition', 'Artino', '4/4', '', '', '', '', '烏木', '', 1, 1000, 1, '16228431_8001.jpg', 'Special Edition for Thomann ,Fiberglass rod ,Ebony frog ,Nickel mountings', 1, 3),
+(26, 4, 'Cecilia Violin Rosin Sanctus', 'Cecilia', '0', '', '', '', '', '', '', 1, 2300, 1, '9712945_8001.jpg', 'Consists of a harder outer layer with a softer inner core ,Incl. Cecilia Rosin Spreader', 1, 4),
+(27, 4, 'Gewa Rosin Karwendel', 'Gewa', '0', '', '', '', '', '', '', 1, 80, 1, '16222601_8001.jpg', 'Resin from Karwendel ,In cork cover', 1, 4),
+(28, 4, 'Cecilia Violin Rosin Small Solo', 'Cecilia', '0', '', '', '', '', '', '', 1, 1000, 1, '16783414_8001.jpg', 'For a pure, clean and defined sound ,High dynamic range ,Ideal for soloists and large halls ,Each piece Andrea Rosin Kolofon is handmade from finest i', 1, 4),
+(29, 4, 'Leatherwood Bespoke Rosin Violin Supple', 'Leatherwood', '0', '', '', '', '', '', '', 1, 2400, 1, '15328097_8001.jpg', 'Mixture: Supple ,For soft and full response and a warm, radiant tone', 1, 4),
+(30, 4, 'Cecilia Violin Signature Formula', 'Cecilia', '0', '', '', '', '', '', '', 1, 1900, 1, '10079230_8001.jpg', 'Unique bowing experience with a clearly defined articulation ,Full, rich tone without too much grip ,Produced by using a new liquid mixing method ,Eac', 1, 4),
+(31, 3, 'Artino Violin Bow 3/4 Special Edition', 'Artino', '0', '', '', '', '', '烏木', '', 1, 1000, 1, '10079215_800.jpg', 'Special Edition for Thomann ,Fiberglass stick ,Ebony frog ,Nickel mountings', 1, NULL),
+(32, 1, 'Stentor SR1500 Violin Student II 3/4', 'Stentor', '3/4', '雲杉木', '楓木', '楓木', '烏木', '', '', 1, 7300, 1, '', 'Size: 3/4 ,Model: Student II ,Solid spruce top ,Solid maple body ,Pegs & fingerboard made of ebony (Diospyros crassiflora) ,Chin rest made of hardwood', 0, 1),
+(34, 1, '123', '1', '111', '1', '11', '1', '1', '', NULL, 1, 11, 1, '1707126602_okchang16', '11', 0, 1),
+(35, 1, '123', '1111', '4/4', '1111', '111', '111', '1111', '', NULL, 20, 66, 0, '1707127646_okchang168_1498726880_1547755709336073417_5664611965.jpg', '', 0, 1),
+(36, 1, 'fdghdhfg', 'fghdfgh', 'fghd', 'fhgdfh', '', 'fghdfhdg', '', '', NULL, 0, 0, 1, '1707127709_okchang168_1498726880_1547755709336073417_5664611965.jpg', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -700,27 +684,27 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `name`, `account`, `password`, `phone`, `email`, `level`, `birth`, `valid`) VALUES
-(1, 'Eleganza', 'Eleganza', '12345', '0900000001', 'mfee48five@gmail.com', '', '2024-02-01', 2),
-(2, '吳慧安', 'Rm10Hi1Fuo', '12345', '0943785942', 'Rm10Hi1Fuo@gmail.com', '1年以下', '2000-11-04', 1),
-(3, '羅展瑄', 'h8IsoBqoJy7moG', '456789', '0900195564', 'h8IsoBqoJy7moG@gmail.com', '3~5年', '2001-03-23', 1),
-(4, '王傑來', 'wclC0MJUDRo5f', 'ABC123', '0913643400', 'wclC0MJUDRo5f@gmail.com', '1~3年', '1997-11-23', 1),
-(5, '蔡彥君', 'RDXQS4x', 'RDXQS4x', '0917348709', 'RDXQS4x@gmail.com', '3~5年', '1986-06-06', 1),
-(6, '黃建志', 'DwoB07', 'DwoB07', '0932264220', 'DwoB07@gmail.com', '1年以下', '1985-04-01', 1),
-(7, '張彥廷', 'Xc9SuY', 'Xc9SuY', '0934991676', 'Xc9SuY@gmail.com', '10年以上', '2002-08-17', 1),
-(8, '劉貴傑', 'I0Kd4eueB', 'I0Kd4eueB', '0932659022', 'I0Kd4eueB@gmail.com', '1~3年', '1970-02-13', 1),
-(9, '陳淑貞', 'IwYiIGG7mJv', 'IwYiIGG7mJv', '0927736559', 'IwYiIGG7mJv@gmail.com', '3~5年', '1965-08-09', 1),
-(10, '周樂信', 'LPpUqW92', 'LPpUqW92', '0986448499', 'LPpUqW92@gmail.com', '1年以下', '2003-12-14', 1),
-(11, '陳政祥', 'HeaxPuD', 'HeaxPuD', '0987117567', 'HeaxPuD@gmail.com', '10年以上', '2005-09-15', 1),
-(12, '吳嘉惠', 'CsI5Ah', 'CsI5Ah', '0986718802', 'CsI5Ah@gmail.com', '1年以下', '1987-08-02', 1),
-(13, '李仁杰', 'ApYNmDAu1K', 'ApYNmDAu1K', '0912562739', 'ApYNmDAu1K@gmail.com', '1年以下', '1987-07-15', 1),
-(14, '張英傑', 'Oy6k6NVVb', 'Oy6k6NVVb', '0931564356', 'Oy6k6NVVb@gmail.com', '10年以上', '1994-06-21', 1),
-(15, '林鳳男', 'JGZfAYwy', 'JGZfAYwy', '0928767508', 'JGZfAYwy@gmail.com', '3~5年', '1975-04-20', 1),
-(16, '楊心怡', 'Q3hYSzsFJ', 'Q3hYSzsFJ', '0934523736', 'Q3hYSzsFJ@gmail.com', '1年以下', '1999-09-29', 1),
-(17, '謝貞儀', 'SQ3ADo2gf', 'SQ3ADo2gf', '0968933511', 'SQ3ADo2gf@gmail.com', '3~5年', '2002-02-12', 1),
-(18, '許雅桂', 'Phf9ij7HLEi0', 'Phf9ij7HLEi0', '0918635052', 'Phf9ij7HLEi0@gmail.com', '1~3年', '2000-05-09', 1),
-(19, '洪書豪', 'QRi64vyWZ2sQ', 'QRi64vyWZ2sQ', '0938470302', 'QRi64vyWZ2sQ@gmail.com', '3~5年', '1970-10-17', 1),
-(20, '白美玲', 'JQU15', 'JQU15', '0915946180', 'JQU15@gmail.com', '1年以下', '1989-01-23', 1),
-(21, '黃秀發', 'YWdsjwJvCJpT', 'YWdsjwJvCJpT', '0926315998', 'YWdsjwJvCJpT@gmail.com', '1~3年', '2004-01-31', 1);
+(0, 'Eleganza', 'Eleganza', '12345', '0900000001', 'mfee48five@gmail.com', '', '2024-02-01', 2),
+(1, '吳慧安', 'Rm10Hi1Fuo', '12345', '0943785942', 'Rm10Hi1Fuo@gmail.com', '1年以下', '2000-11-04', 1),
+(2, '羅展瑄', 'h8IsoBqoJy7moG', '456789', '0900195564', 'h8IsoBqoJy7moG@gmail.com', '3~5年', '2001-03-23', 1),
+(3, '王傑來', 'wclC0MJUDRo5f', 'ABC123', '0913643400', 'wclC0MJUDRo5f@gmail.com', '1~3年', '1997-11-23', 1),
+(4, '蔡彥君', 'RDXQS4x', 'RDXQS4x', '0917348709', 'RDXQS4x@gmail.com', '3~5年', '1986-06-06', 1),
+(5, '黃建志', 'DwoB07', 'DwoB07', '0932264220', 'DwoB07@gmail.com', '1年以下', '1985-04-01', 1),
+(6, '張彥廷', 'Xc9SuY', 'Xc9SuY', '0934991676', 'Xc9SuY@gmail.com', '10年以上', '2002-08-17', 1),
+(7, '劉貴傑', 'I0Kd4eueB', 'I0Kd4eueB', '0932659022', 'I0Kd4eueB@gmail.com', '1~3年', '1970-02-13', 1),
+(8, '陳淑貞', 'IwYiIGG7mJv', 'IwYiIGG7mJv', '0927736559', 'IwYiIGG7mJv@gmail.com', '3~5年', '1965-08-09', 1),
+(9, '周樂信', 'LPpUqW92', 'LPpUqW92', '0986448499', 'LPpUqW92@gmail.com', '1年以下', '2003-12-14', 1),
+(10, '陳政祥', 'HeaxPuD', 'HeaxPuD', '0987117567', 'HeaxPuD@gmail.com', '10年以上', '2005-09-15', 1),
+(11, '吳嘉惠', 'CsI5Ah', 'CsI5Ah', '0986718802', 'CsI5Ah@gmail.com', '1年以下', '1987-08-02', 1),
+(12, '李仁杰', 'ApYNmDAu1K', 'ApYNmDAu1K', '0912562739', 'ApYNmDAu1K@gmail.com', '1年以下', '1987-07-15', 1),
+(13, '張英傑', 'Oy6k6NVVb', 'Oy6k6NVVb', '0931564356', 'Oy6k6NVVb@gmail.com', '10年以上', '1994-06-21', 1),
+(14, '林鳳男', 'JGZfAYwy', 'JGZfAYwy', '0928767508', 'JGZfAYwy@gmail.com', '3~5年', '1975-04-20', 1),
+(15, '楊心怡', 'Q3hYSzsFJ', 'Q3hYSzsFJ', '0934523736', 'Q3hYSzsFJ@gmail.com', '1年以下', '1999-09-29', 1),
+(16, '謝貞儀', 'SQ3ADo2gf', 'SQ3ADo2gf', '0968933511', 'SQ3ADo2gf@gmail.com', '3~5年', '2002-02-12', 1),
+(17, '許雅桂', 'Phf9ij7HLEi0', 'Phf9ij7HLEi0', '0918635052', 'Phf9ij7HLEi0@gmail.com', '1~3年', '2000-05-09', 1),
+(18, '洪書豪', 'QRi64vyWZ2sQ', 'QRi64vyWZ2sQ', '0938470302', 'QRi64vyWZ2sQ@gmail.com', '3~5年', '1970-10-17', 1),
+(19, '白美玲', 'JQU15', 'JQU15', '0915946180', 'JQU15@gmail.com', '1年以下', '1989-01-23', 1),
+(20, '黃秀發', 'YWdsjwJvCJpT', 'YWdsjwJvCJpT', '0926315998', 'YWdsjwJvCJpT@gmail.com', '1~3年', '2004-01-31', 1);
 
 -- --------------------------------------------------------
 
@@ -882,6 +866,12 @@ ALTER TABLE `us_discount`
 --
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `course`
+--
+ALTER TABLE `course`
+  MODIFY `course_id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1037;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `course_category`
 --
 ALTER TABLE `course_category`
@@ -939,7 +929,7 @@ ALTER TABLE `piece`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `product_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `product_category`
@@ -975,7 +965,7 @@ ALTER TABLE `teacher`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `us_discount`

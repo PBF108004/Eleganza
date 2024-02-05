@@ -28,7 +28,7 @@ $sql = "SELECT `course`.*, `course_category`.*, `teacher`.`name` AS teacher_name
         `course`.`quota` LIKE '%$search%' OR 
         `course`.`price` LIKE '%$search%' OR 
         `course`.`start_date` LIKE '%$search%' OR 
-        `course`.`time` LIKE '%$search%' OR 
+        `course`.`start_time` LIKE '%$search%' OR 
         `course`.`course_category_id` LIKE '%$search%') 
         $filterClause
         ORDER BY $orderBy $orderDirection";
@@ -180,6 +180,16 @@ $conn->close();
                                 <a class="nav-link" href="../products/product-list.php">產品管理</a>
                             </nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teacher" aria-expanded="false" aria-controls="courses">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            老師
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="../teachers/layout-static.php">老師管理</a>
+                            </nav>
+                        </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             課程
@@ -188,7 +198,6 @@ $conn->close();
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -231,7 +240,7 @@ $conn->close();
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">課程群組</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">首頁</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">首頁</a></li>
                         <li class="breadcrumb-item active">課程群組</li>
                     </ol>
                     <div class="card mb-4">
@@ -296,7 +305,7 @@ $conn->close();
                                     <input type="text" name="filterValue" placeholder="搜尋" value="<?= htmlspecialchars($filterValue) ?>">
                                 </div>
                                 <div>
-                                    <button type="submit" id="button-addon2" class="btn btn-outline-info">搜尋</button>
+                                    <button type="submit" id="button-addon2" class="btn btn-outline-primary">搜尋</button>
                                     <button type="submit" name="reset" class="btn btn-secondary">重置</button>
                                     <select class="" name="orderBy">
                                         <option value="name" <?= ($orderBy == "name") ? "selected" : "" ?>>名稱</option>
@@ -392,7 +401,7 @@ $conn->close();
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <input type="hidden" name="course_id" value="<?= $course['course_id'] ?>">
-                                                    <button class="my-2 btn btn-outline-info" type="submit" name="add_to_group">加入群組</button>
+                                                    <button class="my-2 btn btn-outline-primary" type="submit" name="add_to_group">加入群組</button>
                                                     <button class="btn btn-secondary" type="submit" name="remove_from_group">移出群組</button>
                                                 </form>
                                             </td>
@@ -402,7 +411,7 @@ $conn->close();
                             </table>
                         </div>
                         <div class="datatable-bottom">
-                            <div class="datatable-info">
+                            <div class="datatable-primary">
                                 共 <?= $userCount ?> 筆資料
                             </div>
 

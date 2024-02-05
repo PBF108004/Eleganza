@@ -126,7 +126,7 @@ foreach ($sortedUsers as $sortedUser) {
                         </a>
                         <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.php">老師管理</a>
+                                <a class="nav-link" href="../teachers/layout-static.php">老師管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
@@ -137,7 +137,6 @@ foreach ($sortedUsers as $sortedUser) {
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="../courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -180,8 +179,8 @@ foreach ($sortedUsers as $sortedUser) {
                 <div class="container px-4">
                     <h1 class="mt-4">會員</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
-                        <li class="breadcrumb-item active"><a class="nav-link link-info" href="user-list.php">會員清單</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item active"><a class="nav-link link-primary" href="user-list.php">會員清單</a></li>
                         <li class="mx-3 breadcrumb-item active">詳細資料</li>
                     </ol>
                     <div class="card mb-4">
