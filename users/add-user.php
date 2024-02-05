@@ -10,12 +10,6 @@ if (!isset($_GET["id"])) {
 } else {
     $id = $_GET["id"];
 }
-session_start();
-
-if (isset($_SESSION["user"])) {
-    header("location: user-list.php");
-    exit;
-}
 
 
 
@@ -41,14 +35,14 @@ if ($rowCount != 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Eleganza studio (阿爾扎工作室)</title>
+    <title>新增會員-Eleganza</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
+    <?php include("../css/css.php") ?>
     </head>
 
     <body class="sb-nav-fixed">
@@ -109,6 +103,16 @@ if ($rowCount != 0) {
                                     <a class="nav-link" href="../products/product-list.php">產品管理</a>
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teacher" aria-expanded="false" aria-controls="courses">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                老師
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.php">老師管理</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 課程
@@ -158,57 +162,17 @@ if ($rowCount != 0) {
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container px-4">
-                        <h1 class="mt-4">會員</h1>
+                        <h1 class="mt-4">新增會員</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">會員資料</li>
+                            <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
+                            <li class="breadcrumb-item"><a class="nav-link link-info" href="user-list.php">會員資料</a></li>
+                            <li class="mx-3 breadcrumb-item active">新增會員</li>
                         </ol>
-                        <!-- <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                會員資訊填寫
-                            </div>
                             <div class="container">
                                 <div class="py-2">
-                                    <a class="btn btn-primary" href="../user-list.php" role="button">
-                                        <i class="fa-solid fa-chevron-left"></i>返回
+                                    <a class="btn" href="user-list.php" role="button">
+                                        <i class="text-secondary fa-solid fa-chevron-left"></i>
                                     </a>
                                 </div>
                                 <form action="doAddUser.php" method="post">
@@ -238,7 +202,7 @@ if ($rowCount != 0) {
                                         <input type="date" class="form-control" name="birth" required>
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary">送出</button>
+                                        <button type="submit" class="btn btn-outline-info">新增</button>
                                     </div>
                                     <?php if (isset($_SESSION["error"]["message"])) : ?>
                                         <div class="pt-2">
@@ -252,19 +216,14 @@ if ($rowCount != 0) {
                         </div>
                     </div>
                 </main>
-            </div>
-            <!-- <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2024</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-center small">
+                            <div class="">Eleganza studio (阿爾扎工作室) &copy; Website 2024</div>
                         </div>
                     </div>
-                </div>
-            </footer> -->
+                </footer>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>

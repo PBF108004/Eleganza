@@ -1,5 +1,5 @@
 <?php
-require_once("../db_connect.php");
+require_once("./db_violin_connect.php");
 
 $id=$_GET["id"];
 var_dump($id);
@@ -28,5 +28,5 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 
-header("location: ./course_list.php");
+header("location: course_list.php");
 

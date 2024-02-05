@@ -1,55 +1,49 @@
 <?php
 session_start();
 if (!isset($_SESSION["user"]))
-    header("location: login.php");
+    header("location: ../login.php");
+
+
+if (!isset($_GET["order_id"])) {
+    $order_id = 0;
+} else {
+    $order_id = $_GET["order_id"];
+}
 
 require_once("../db_connect.php");
 
-$sql_course_category = "SELECT * FROM course_category";
-$result_course_category = $conn->query($sql_course_category);
-$course_categories = $result_course_category->fetch_all();
-//出現0, 1, 2...應該是fetch_all這個方法所造成的排序 fetch_assoc大概只能一次抓一個 *是抓全部的意思
-// $course_categories = [];
-// if ($result_course_category) {
-//     while ($row = $result_course_category->fetch_assoc()) {
-//         $course_categories[] = $row['level'];
-//     }
-// } else {
-//     echo "獲取課程類別失敗：" . $conn->error;
-// }
+$sql = "SELECT order_detail.*, `order`.*
+        FROM order_detail
+        JOIN `order` ON order_detail.order_id = `order`.order_id
+        WHERE order_detail.order_id = $order_id";
+$result = $conn->query($sql);
+$rowCount = $result->num_rows;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $newStatus = $_POST["new_status"];
+    $orderId = $_POST["order_id"];
+    $statusSql = "SELECT status FROM `order` WHERE `order_id`='$orderId'";
+    $statusResult = $conn->query($statusSql);
+    if ($statusResult->num_rows > 0) {
+        $statusRow = $statusResult->fetch_assoc();
+        $currentStatus = $statusRow["status"];
+        if ($currentStatus == '未取貨') {
+            $updateSql = "UPDATE `order` SET `status`='$newStatus'";
+            if ($newStatus == '取消訂單') {
+                $updateSql .= ", `cancel_date` = NOW()";
+            }
+            $updateSql .= " WHERE `order_id`='$orderId'";
+            if ($conn->query($updateSql)) {
+                echo "訂單狀態更新成功！";
+            } else {
+                echo "Error updating record: " . $conn->error;
+            }
+        } else {
+            echo "只有未取貨的訂單才能修改狀態！";
+        }
+    }
+}
 ?>
-
-<?php
-$sql_teacher = "SELECT * FROM teacher";
-$result_teacher = $conn->query($sql_teacher);
-$teachers = $result_teacher->fetch_all();
-// var_dump($sql_teacher);
-
-// $teachers = [];
-// if ($result_teacher) {
-//     while ($row = $result_teacher->fetch_assoc()) {
-//         $teachers[] = $row['name'];
-//     }
-// } else {
-//     echo "獲取授課老師失敗：" . $conn->error;
-// }
-?>
-<?php
-$sql_style = "SELECT * FROM course_style";
-$result_style = $conn->query($sql_style);
-$styles = $result_style->fetch_all();
-// var_dump($styles);
-
-// $styles = [];
-// if ($result_style) {
-//     while ($row = $result_style->fetch_assoc()) {
-//         $styles[] = $row['style_name'];
-//     }
-// } else {
-//     echo "獲取課程音樂風格失敗:" . $conn->error;
-// }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,12 +53,13 @@ $styles = $result_style->fetch_all();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Static Navigation - SB Admin</title>
+    <title>Tables - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="../index.php">Eleganza studio (阿爾扎工作室)</a>
@@ -150,7 +145,7 @@ $styles = $result_style->fetch_all();
                         </a>
                         <div class="collapse" id="orders" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="../orders/orders.php">訂單管理</a>
+                                <a class="nav-link" href="orders/orders.php">訂單管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#groups" aria-expanded="false" aria-controls="groups">
@@ -171,62 +166,67 @@ $styles = $result_style->fetch_all();
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">新增課程</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="../index.php">總覽</a></li>
-                        <li class="breadcrumb-item active">新增課程</li>
-                    </ol>
-                    <div class="container">
-                        <form class="col-lg-6 col-md-9 col-sm-12" action="DoAddCourse.php" method="post" enctype="multipart/form-data">
-                            <div class="py-2">
-                                <a class="btn btn-dark" href="course_list.php" role="button"><i class="fa-solid fa-chevron-left"></i>回課程列表</a>
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">課程名稱</label>
-                                <input type="text" class="form-control" name="name">
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">課程圖片</label>
-                                <input type="file" class="form-control" name="course_images">
-                            </div>
-                            <select class="form-select mt-3" name="course_category_level" aria-label="Default select example">
-                                <option selected disabled hidden name="course_category_level">課程類别</option>
-                                <?php foreach ($course_categories as $category) : ?>
-                                    <option value="<?= $category[0] ?>"><?= $category[1] ?></option>
-                                <?php endforeach; ?>
-                            </select>
+                    <div class="py-2">
+                        <a class="btn btn-primary" href="orders.php" role="button">回清單列表</a>
 
-                            <select class="form-select mt-3" name="course_teacher_name" aria-label="Default select example">
-                                <option selected disabled hidden name="course_teacher_name">授課老師</option>
-                                <?php foreach ($teachers as $teacher) : ?>
-                                    <option value="<?= $teacher[0] ?>"><?= $teacher[1] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <select class="form-select mt-3" name="style" aria-label="Default select example">
-                                <option selected disabled hidden name="style">課程音樂風格</option>
-                                <?php foreach ($styles as $style) : ?>
-                                    <option value="<?= $style[0] ?>"><?= $style[1] ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="mb-2 mt-3">
-                                <label for="" class="form-label">學費</label>
-                                <input type="text" class="form-control" name="price">
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">限額</label>
-                                <input type="text" class="form-control" name="quota">
-                            </div>
-                            <div class="mb-3">
-                                <label for="courseAddIntro" class="form-label mt-3">備註</label>
-                                <textarea class="form-control" id="courseAddIntro" rows="3" name="comment"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="courseAddIntro" class="form-label mt-3">描述</label>
-                                <textarea class="form-control" id="courseAddIntro" rows="3" name="des"></textarea>
-                            </div>
-                            <button class="btn btn-dark mb-3" type="submit">新增課程</button>
-                        </form>
                     </div>
+                    <?php if ($rowCount == 0) : ?>
+                        使用者不存在
+                    <?php else :
+                        $row = $result->fetch_assoc();
+                    ?>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>詳細訂單ID</th>
+                                <td><?= $row["detail_id"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>訂單ID</th>
+                                <td><?= $row["order_id"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>訂單類型</th>
+                                <td><?= $row["product_type"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>商品ID</th>
+                                <td><?= $row["course_product_id"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>數量</th>
+                                <td><?= $row["num"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>訂單狀態</th>
+                                <td><?= $row["status"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>取消日期</th>
+                                <td><?= $row["cancel_date"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>修改訂單狀態</th>
+                                <td>
+                                    <?php if ($row["status"] == '未取貨') : ?>
+                                        <form method="post" action="">
+                                            <input type="hidden" name="order_id" value="<?= $row["order_id"] ?>">
+                                            <select name="new_status" class="form-select" required>
+                                                <option value="未取貨" <?php if ($row["status"] == "未取貨") echo "selected"; ?>>未取貨</option>
+                                                <option value="完成訂單" <?php if ($row["status"] == "完成訂單") echo "selected"; ?>>完成訂單</option>
+                                                <option value="取消訂單" <?php if ($row["status"] == "取消訂單") echo "selected"; ?>>取消訂單</option>
+                                            </select>
+                                            <button type="submit" class="btn btn-primary btn-sm">更新狀態</button>
+                                        </form>
+                                    <?php else : ?>
+                                        <?= $row["status"] ?>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+
+                        </table>
+                    <?php endif; ?>
+
+                </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -244,6 +244,8 @@ $styles = $result_style->fetch_all();
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="../js/datatables-simple-demo.js"></script>
+</body>s
 
 </html>

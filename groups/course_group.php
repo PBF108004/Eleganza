@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["user"]))
-    header("location: login.php");
+    header("location: ../login.php");
 
 require_once("../db_connect.php");
 
@@ -115,10 +115,11 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Tables - SB Admin</title>
+    <title>商品群組-Eleganza</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <?php include("../css/css.php") ?>
 </head>
 
 <body class="sb-nav-fixed">
@@ -143,7 +144,7 @@ $conn->close();
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">登出</a></li>
+                    <li><a class="dropdown-item" href="../logout.php">登出</a></li>
                 </ul>
             </li>
         </ul>
@@ -166,7 +167,7 @@ $conn->close();
                         </a>
                         <div class="collapse" id="users" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="users/user-list.php">會員資料</a>
+                                <a class="nav-link" href="../users/user-list.php">會員資料</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#products" aria-expanded="false" aria-controls="collapseLayouts">
@@ -176,7 +177,7 @@ $conn->close();
                         </a>
                         <div class="collapse" id="products" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="products/product-list.php">產品管理</a>
+                                <a class="nav-link" href="../products/product-list.php">產品管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
@@ -186,8 +187,8 @@ $conn->close();
                         </a>
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="courses/course_management.php">課程管理</a>
+                                <a class="nav-link" href="../courses/course_list.php">課程列表</a>
+                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -197,7 +198,7 @@ $conn->close();
                         </a>
                         <div class="collapse" id="discounts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="discounts/discounts.php">折扣管理</a>
+                                <a class="nav-link" href="../discounts/discounts.php">折扣管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#orders" aria-expanded="false" aria-controls="collapseLayouts">
@@ -207,7 +208,7 @@ $conn->close();
                         </a>
                         <div class="collapse" id="orders" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="orders/orders.php">訂單管理</a>
+                                <a class="nav-link" href="../orders/orders.php">訂單管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#groups" aria-expanded="false" aria-controls="groups">
@@ -217,8 +218,8 @@ $conn->close();
                         </a>
                         <div class="collapse" id="groups" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="groups/product_group.php">商品群組</a>
-                                <a class="nav-link" href="groups/course_group.php">課程群組</a>
+                                <a class="nav-link" href="../groups/product_group.php">商品群組</a>
+                                <a class="nav-link" href="../groups/course_group.php">課程群組</a>
                             </nav>
                         </div>
                     </div>
@@ -230,7 +231,7 @@ $conn->close();
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">課程群組</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">首頁</a></li>
                         <li class="breadcrumb-item active">課程群組</li>
                     </ol>
                     <div class="card mb-4">
@@ -246,7 +247,7 @@ $conn->close();
                         <form method="post">
                             <label for="group_name">建立群組：</label>
                             <input type="text" name="group_name" required>
-                            <button type="submit" name="create_group">建立</button>
+                            <button class="btn" type="submit" name="create_group"><i class="text-secondary fa-solid fa-plus"></i></button>
                         </form>
 
                         <form method="post">
@@ -257,7 +258,7 @@ $conn->close();
                                     <option value="<?= $group['group_id'] ?>"><?= $group['group_name'] ?></option>
                                 <?php endforeach; ?>
                             </select>
-                            <button type="submit" name="delete_group">刪除</button>
+                            <button class="btn" type="submit" name="delete_group"><i class="text-secondary fa-solid fa-trash"></i></button>
                         </form>
                         <form method="post">
                             <label for="group_id">重新命名群組：</label>
@@ -269,7 +270,7 @@ $conn->close();
                             </select>
                             <label for="new_group_name">新群組名稱：</label>
                             <input type="text" name="new_group_name" required>
-                            <button type="submit" name="rename_group">重新命名</button>
+                            <button class="btn" type="submit" name="rename_group"><i class="text-secondary fa-solid fa-pen"></i></button>
                         </form>
                     </div>
                     <div class="card mb-4">
@@ -295,7 +296,7 @@ $conn->close();
                                     <input type="text" name="filterValue" placeholder="搜尋" value="<?= htmlspecialchars($filterValue) ?>">
                                 </div>
                                 <div>
-                                    <button type="submit" id="button-addon2" class="btn btn-primary">搜尋</button>
+                                    <button type="submit" id="button-addon2" class="btn btn-outline-info">搜尋</button>
                                     <button type="submit" name="reset" class="btn btn-secondary">重置</button>
                                     <select class="" name="orderBy">
                                         <option value="name" <?= ($orderBy == "name") ? "selected" : "" ?>>名稱</option>
@@ -391,8 +392,8 @@ $conn->close();
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <input type="hidden" name="course_id" value="<?= $course['course_id'] ?>">
-                                                    <button type="submit" name="add_to_group">加入群組</button>
-                                                    <button type="submit" name="remove_from_group">移出群組</button>
+                                                    <button class="my-2 btn btn-outline-info" type="submit" name="add_to_group">加入群組</button>
+                                                    <button class="btn btn-secondary" type="submit" name="remove_from_group">移出群組</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -411,22 +412,17 @@ $conn->close();
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+                    <div class="d-flex align-items-center justify-content-center small">
+                        <div class="">Eleganza studio (阿爾扎工作室) &copy; Website 2024</div>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+    <script src="../js/datatables-simple-demo.js"></script>
 </body>
 
 </html>

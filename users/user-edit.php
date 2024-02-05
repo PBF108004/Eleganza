@@ -38,16 +38,14 @@ if ($rowCount != 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Eleganza studio (阿爾扎工作室)</title>
+    <title>修改會員-Eleganza</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    <?php
-    include("../css/css.php")
-    ?>
+    <?php include("../css/css.php") ?>
     <style>
 
     </style>
@@ -111,6 +109,16 @@ if ($rowCount != 0) {
                                     <a class="nav-link" href="../products/product-list.php">產品管理</a>
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teacher" aria-expanded="false" aria-controls="courses">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                老師
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.php">老師管理</a>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 課程
@@ -162,35 +170,15 @@ if ($rowCount != 0) {
                     <div class="container px-4">
                         <h1 class="mt-4">會員</h1>
                         <ol class="breadcrumb mb-4">
-                            <!-- <li class="breadcrumb-item"><a href="#">會員</a></li> -->
-                            <li class="breadcrumb-item active"><a href="./user-list.php">會員清單</a></li>
-                            <li class="breadcrumb-item"><a href="user.php?id=<?= $row["user_id"] ?>">會員資料</a></li>
+                            <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
+                            <li class="breadcrumb-item"><a class="nav-link link-info" href="./user-list.php">會員清單</a></li>
+                            <li class="mx-3 breadcrumb-item active"><a class="nav-link link-info" href="user.php?id=<?= $row["user_id"] ?>">詳細資料</a></li>
+                            <li class="breadcrumb-item active">修改會員</li>
                         </ol>
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                會員資訊填寫
-                            </div>
                             <div class="container">
                                 <div class="py-2">
-                                    <a class="btn btn-primary" href="./user.php?id=<?= $row["user_id"] ?>" role="button"><i class="fa-solid fa-chevron-left"></i>返回</a>
-                                </div>
-                                <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">刪除使用者</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                確認刪除?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                                <a role="button" class="btn btn-danger" href="doDeleteUser.php?id=<?= $row["user_id"] ?>">確認</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <a class="btn" href="./user.php?id=<?= $row["user_id"] ?>" role="button"><i class="text-secondary fa-solid fa-chevron-left"></i></a>
                                 </div>
                                 <div class="container">
                                     <?php if ($rowCount == 0) : ?>
@@ -226,7 +214,7 @@ if ($rowCount != 0) {
                                                 </tr>
                                             </table>
                                             <div class="">
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-outline-info">
                                                     儲存
                                                 </button>
                                             </div>
@@ -237,9 +225,15 @@ if ($rowCount != 0) {
                             </div>
                         </div>
                     </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-center small">
+                            <div class="">Eleganza studio (阿爾扎工作室) &copy; Website 2024</div>
+                        </div>
+                    </div>
+                </footer>
             </div>
-            </main>
-        </div>
         </div>
         <?php include("../js/js.php") ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

@@ -8,7 +8,7 @@
 
     try {
         $stmt->execute();
-        header("location: discounts.php");
+        header("location: ./discounts.php");
     } catch (PDOException $e) {
         echo "預處理陳述式失敗<br>";
         echo "Error: " . $e->getMessage();

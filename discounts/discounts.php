@@ -19,9 +19,6 @@ try {
     exit;
 }
 
-if (isset($_GET["id"])) {
-    $discountId = 0;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +58,7 @@ if (isset($_GET["id"])) {
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">登出</a></li>
+                    <li><a class="dropdown-item" href="../logout.php">登出</a></li>
                 </ul>
             </li>
         </ul>
@@ -84,7 +81,7 @@ if (isset($_GET["id"])) {
                         </a>
                         <div class="collapse" id="users" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="users/user-list.php">會員資料</a>
+                                <a class="nav-link" href="../users/user-list.php">會員資料</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#products" aria-expanded="false" aria-controls="collapseLayouts">
@@ -94,7 +91,17 @@ if (isset($_GET["id"])) {
                         </a>
                         <div class="collapse" id="products" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="products/product-list.php">產品管理</a>
+                                <a class="nav-link" href="../products/product-list.php">產品管理</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teacher" aria-expanded="false" aria-controls="courses">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            老師
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.php">老師管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
@@ -104,8 +111,8 @@ if (isset($_GET["id"])) {
                         </a>
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="courses/course_management.php">課程管理</a>
+                                <a class="nav-link" href="../courses/course_list.php">課程列表</a>
+                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -115,7 +122,7 @@ if (isset($_GET["id"])) {
                         </a>
                         <div class="collapse" id="discounts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="discounts/discounts.php">折扣管理</a>
+                                <a class="nav-link" href="../discounts/discounts.php">折扣管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#orders" aria-expanded="false" aria-controls="collapseLayouts">
@@ -125,7 +132,7 @@ if (isset($_GET["id"])) {
                         </a>
                         <div class="collapse" id="orders" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="orders/orders.php">訂單管理</a>
+                                <a class="nav-link" href="../orders/orders.php">訂單管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#groups" aria-expanded="false" aria-controls="groups">
@@ -135,8 +142,8 @@ if (isset($_GET["id"])) {
                         </a>
                         <div class="collapse" id="groups" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="groups/product_group.php">商品群組</a>
-                                <a class="nav-link" href="groups/course_group.php">課程群組</a>
+                                <a class="nav-link" href="../groups/product_group.php">商品群組</a>
+                                <a class="nav-link" href="../groups/course_group.php">課程群組</a>
                             </nav>
                         </div>
                     </div>
@@ -154,7 +161,7 @@ if (isset($_GET["id"])) {
                     </div>
 
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
                         <li class="breadcrumb-item active">折扣管理</li>
                     </ol>
                     <!-- <div class="py-2">
@@ -212,7 +219,7 @@ if (isset($_GET["id"])) {
                                                 <td class="text-danger"><?php if ($row["valid"] == 0) echo "下架" ?></td>
                                                 <td><a href="rediscount.php?id=<?= $row["discount_id"] ?>" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
 
-                                                <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $row["discount_id"] ?>" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-secondary"></i></button></td>
+                                                <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $row["discount_id"] ?>" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-danger"></i></button></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -236,7 +243,7 @@ if (isset($_GET["id"])) {
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                    <button onclick="express()" href="doDeletediscount.php?id=<?= $discountId ?>" class="btn btn-danger">確定</button>
+                                    <button onclick="express()" class="btn btn-danger">確定</button>
                                 </div>
                             </div>
                         </div>
@@ -273,7 +280,7 @@ if (isset($_GET["id"])) {
     <script src="../vendor/global/global.min.js"></script>
 
     <!-- Datatable -->
-    <script src="../vendor//datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="../js/plugins-init/datatables.init.js"></script>
 </body>
 

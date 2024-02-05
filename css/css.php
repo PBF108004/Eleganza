@@ -1,6 +1,6 @@
 <style>
     .loginbodybg {
-        background: url("./images/loginbackground.png") center center /cover;
+        background: url("./imagesbg/loginbackground.png") center center /cover;
     }
 
     a {

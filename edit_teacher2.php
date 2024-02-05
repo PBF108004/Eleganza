@@ -3,29 +3,16 @@ session_start();
 if (!isset($_SESSION["user"]))
     header("location: login.php");
 
-require_once("../db_connect.php");
+require_once("db_connect.php");
 
-$id = $_GET["id"]; //獲取傳遞過來的課程id id長這樣是自己設定的
+$id = $_GET["id"];
 
-$sql = "SELECT course.*, course_category.level AS course_category_level, 
-        teacher.name AS course_teacher_name, course_style.style_name AS course_style_id
-        FROM course
-        JOIN course_category ON course.course_category_id = course_category.course_category_id 
-        JOIN teacher ON course.teacher_id = teacher.teacher_id 
-        JOIN course_style ON course.style_id = course_style.style_id
-        WHERE course.course_id = $id AND valid=1
-        ORDER BY course.course_id";
-
+$sql = "SELECT * FROM teacher WHERE teacher_id=$id";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-// $rowCount=$result->num_rows;
-// var_dump($row);
+
 
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,13 +22,15 @@ $row = $result->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Static Navigation - SB Admin</title>
-    <link href="../css/styles.css" rel="stylesheet" />
+    <title>修改師資-Eleganza</title>
+    <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <?php include("css/css.php") ?>
 </head>
 
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="../index.php">Eleganza studio (阿爾扎工作室)</a>
         <!-- Sidebar Toggle-->
@@ -98,6 +87,16 @@ $row = $result->fetch_assoc();
                                 <a class="nav-link" href="../products/product-list.php">產品管理</a>
                             </nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teacher" aria-expanded="false" aria-controls="courses">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            老師
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.php">老師管理</a>
+                            </nav>
+                        </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             課程
@@ -146,105 +145,107 @@ $row = $result->fetch_assoc();
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container-fluid px-4">
-                    <h1 class="mt-4">課程簡介</h1>
-                    <div class="d-flex justify-content-between mt-3 mb-3">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <a class="nav-link active " aria-current="page" href="course_list.php">全部課程</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">初階個別課</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">中階個別課</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">高階個別課</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">團體課</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">大師班</a>
-                            </li>
-                        </ul>
-                        <div>
-                            <a class="btn btn-dark mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">下架課程</a>
-                            <a class="btn btn-dark" href="course-edit.php?id=<?= $row["course_id"] ?>">編輯課程</a>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">注意：下架課程</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    您確定要下架此筆課程資料嗎？
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">取消</button>
-                                    <a class="btn btn-danger" href="DoDeleteCourse.php?id=<?= $row["course_id"] ?>">確定下架</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 可能要新增課程的簡介 編輯那邊要改成簡介  -->
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="../index.php">總覽</a></li>
-                        <li class="breadcrumb-item"><a href="course_list.php">課程列表</a></li>
-                        <li class="breadcrumb-item active">課程簡介</li>
+                <div class="container-fluid px-6" style="max-width:700px;">
+                    <p class="mt-4"><a class="btn" href="layout-static.php"><i class="text-secondary fa-solid fa-arrow-left"></i></a></p>
+                    <h1 class="mt-4">編輯老師資訊</h1>
+
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-info" href="layout-static.php">所有老師</a></li>
+                        <li class="mx-3 breadcrumb-item active">編輯師資</li>
                     </ol>
-
-                    <div class="col-md-12">
-                        <div class="d-flex justify-content-center">
-                            <div class="col-md-6 col-sm-12">
-                                <img style="width: 80%;" class="img-fluid" src="./course_images/<?= $row["img"] ?>" alt="<?= $row["name"] ?>">
-                            </div>
-                            <!-- 有時間再調整一下手機版時候的UI -->
-                            <div class="col-md-6 col-sm-12">
-                                <div class="d-flex justify-content-start h2">
-                                    <div class="mb-2 mx-2">
-                                        <?= $row["course_category_level"] ?>
-                                    </div>
-                                    <div class="mb-2">
-                                        <?= $row["course_style_id"] ?>
-                                    </div>
+                    <div class="card">
+                        <!-- <h2 class="card-header text-center">編輯老師資訊</h2> -->
+                        <div class="card-body">
+                            <form action="doedit_teacher2.php" method="post" enctype="multipart/form-data" style="max-width: 500px; margin: auto;" onsubmit="return validateForm();">
+                                <div class="mb-3">
+                                    <!-- <label for="teacher_id" class="form-label">ID</label> -->
+                                    <input type="hidden" class="form-control" id="teacher_id" name="teacher_id" value="<?= $row["teacher_id"] ?>" readonly>
                                 </div>
-                                <h1><?= $row["name"] ?></h1>
-                                <div class="text-danger text-end h4">$<?= number_format($row["price"]) ?></div>
-                                <div style="font-size: 1.5rem"><?= $row["description"] ?></div>
-                                <div>課程開始：<?= $row["start_date"] ?></div>
-                                <div>課程結束：<?= $row["end_date"] ?></div>
-                                <div>課程時間：<?= $row["time"] ?></div>
-                                <div><?= $row["comment"] ?></div>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="teacher_name" class="form-label">姓名</label>
+                                    <input type="text" class="form-control" id="teacher_name" name="teacher_name" value="<?= $row["name"] ?>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="teacher_name" class="form-label">電話</label>
+                                    <input type="text" class="form-control" id="teacher_phone" name="teacher_phone" value="<?= $row["phone"] ?>">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="teacher_name" class="form-label">電子郵件</label>
+                                    <input type="text" class="form-control" id="teacher_email" name="teacher_email" value="<?= $row["email"] ?>">
+                                </div>
+                                <div class="mb-3">
+                                    <!-- <label for="teacher_img" class="form-label">圖片</label>
+                                    <img src="./img/<?= $row["img"] ?>" class="img-fluid img-thumbnail" id="teacher_img" name="teacher_img" style="max-width:500px; max-height:500px;" alt="">
+                                    <input type="file" class="form-control" id="teacher_img" name="teacher_img_upload"> -->
+
+
+                                    <label for="teacher_img" class="form-label">預覽圖片</label>
+                                    <img src="./img/<?= $row["img"] ?>" class="img-fluid img-thumbnail" id="preview" style="max-width:500px; max-height:500px;" alt="">
+                                    <input type="file" class="form-control" id="teacher_img_upload" name="teacher_img_upload" onchange="previewImage(this)">
+
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="teacher_introduction" class="form-label ">介紹</label>
+                                    <textarea class="form-control" name="teacher_introduction" id="teacher_introduction" rows="10"><?= $row["introduction"] ?></textarea>
+                                </div>
+                                <div class="mb-3 text-center">
+                                    <input type="submit" class="btn btn-secondary " name="button" value="儲存資料">
+                                </div>
+                            </form>
                         </div>
-
                     </div>
-
-
-                    <h1></h1>
-                    <img src="" alt="">
+                </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+                    <div class="d-flex align-items-center justify-content-center small">
+                        <div class="">Eleganza studio (阿爾扎工作室) &copy; Website 2024</div>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../js/scripts.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        function validateForm() {
+            // 獲取使用者輸入的 email 和 phone
+            var email = document.getElementById("teacher_email").value;
+            var phone = document.getElementById("teacher_phone").value;
+
+            // 檢查 email 是否為有效的格式
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("請輸入有效的電子郵件地址");
+                return false;
+            }
+
+            // 檢查 phone 是否為有效的格式，這裡只是一個簡單的檢查方式，實際中可能需要更複雜的驗證邏輯
+            var phoneRegex = /^\d{10}$/; // 這裡假設電話是 10 位數字
+            if (!phoneRegex.test(phone)) {
+                alert("請輸入有效的電話號碼");
+                return false;
+            }
+
+            // 如果通過了上述檢查，返回 true，提交表單
+            return true;
+        }
+
+        function previewImage(input) {
+            var preview = document.getElementById('preview');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </body>
 
 </html>

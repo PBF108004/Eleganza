@@ -43,4 +43,4 @@
         exit;
     }
 
-    header("location: discounts.php");
+    header("location: ./discounts.php");

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["user"]))
-    header("location: login.php");
+    header("location: ../login.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,9 +13,9 @@ if (!isset($_SESSION["user"]))
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>新增折扣-Eleganza</title>
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <?php include("css/css.php") ?>
+    <?php include("../css/css.php") ?>
 </head>
 
 <body class="sb-nav-fixed">
@@ -40,7 +40,7 @@ if (!isset($_SESSION["user"]))
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">登出</a></li>
+                    <li><a class="dropdown-item" href="../logout.php">登出</a></li>
                 </ul>
             </li>
         </ul>
@@ -63,7 +63,7 @@ if (!isset($_SESSION["user"]))
                         </a>
                         <div class="collapse" id="users" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="users/user-list.php">會員資料</a>
+                                <a class="nav-link" href="../users/user-list.php">會員資料</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#products" aria-expanded="false" aria-controls="collapseLayouts">
@@ -73,7 +73,17 @@ if (!isset($_SESSION["user"]))
                         </a>
                         <div class="collapse" id="products" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="products/product-list.php">產品管理</a>
+                                <a class="nav-link" href="../products/product-list.php">產品管理</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teacher" aria-expanded="false" aria-controls="courses">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            老師
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.php">老師管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
@@ -83,8 +93,8 @@ if (!isset($_SESSION["user"]))
                         </a>
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="courses/course_management.php">課程管理</a>
+                                <a class="nav-link" href="../courses/course_list.php">課程列表</a>
+                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -94,7 +104,7 @@ if (!isset($_SESSION["user"]))
                         </a>
                         <div class="collapse" id="discounts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="discounts/discounts.php">折扣管理</a>
+                                <a class="nav-link" href="../discounts/discounts.php">折扣管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#orders" aria-expanded="false" aria-controls="collapseLayouts">
@@ -104,7 +114,7 @@ if (!isset($_SESSION["user"]))
                         </a>
                         <div class="collapse" id="orders" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="orders/orders.php">訂單管理</a>
+                                <a class="nav-link" href="../orders/orders.php">訂單管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#groups" aria-expanded="false" aria-controls="groups">
@@ -114,8 +124,8 @@ if (!isset($_SESSION["user"]))
                         </a>
                         <div class="collapse" id="groups" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="groups/product_group.php">商品群組</a>
-                                <a class="nav-link" href="groups/course_group.php">課程群組</a>
+                                <a class="nav-link" href="../groups/product_group.php">商品群組</a>
+                                <a class="nav-link" href="../groups/course_group.php">課程群組</a>
                             </nav>
                         </div>
                     </div>
@@ -127,8 +137,8 @@ if (!isset($_SESSION["user"]))
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">新增折扣</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
-                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="discounts.php">折扣管理</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-info" href="discounts.php">折扣管理</a></li>
                         <li class="breadcrumb-item mx-3 active">新增折扣</li>
                     </ol>
                     <div class="card py-3 px-5">
@@ -293,7 +303,7 @@ if (!isset($_SESSION["user"]))
         })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </body>
 

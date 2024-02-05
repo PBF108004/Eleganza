@@ -119,12 +119,13 @@ if (isset($_GET["search"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Eleganza studio (阿爾扎工作室)</title>
+    <title>會員管理-Eleganza</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <?php include("../css/css.php") ?>
 </head>
 
 <body class="sb-nav-fixed">
@@ -185,6 +186,16 @@ if (isset($_GET["search"])) {
                                 <a class="nav-link" href="../products/product-list.php">產品管理</a>
                             </nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#teacher" aria-expanded="false" aria-controls="courses">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            老師
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="teacher" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.php">老師管理</a>
+                            </nav>
+                        </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             課程
@@ -233,121 +244,125 @@ if (isset($_GET["search"])) {
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <div class="container px-4">
-                    <h1 class="mt-4">會員清單</h1>
+                <div class="container-fluid px-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="mt-4">會員清單</h1>
+                        </div>
+                        <div class="py-2 ms-2">
+                            <a href="add-user.php" name="" class="btn" role="button"><i class="text-secondary fa-solid fa-user-plus fa-fw"></i></a>
+                        </div>
+                    </div>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="../index.php">首頁</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-info" href="../index.php">總覽</a></li>
                         <li class="breadcrumb-item active">會員清單</li>
                     </ol>
-                    <div class="card mb-4">
-                        <!-- Model -->
-                        <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">刪除使用者</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        確認刪除?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                        <button role="button" class="btn btn-danger" onclick="deleteuser()">確認</button>
-                                    </div>
+                    <!-- Model -->
+                    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">刪除使用者</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    確認刪除?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button role="button" class="btn btn-danger" onclick="deleteuser()">確認</button>
                                 </div>
                             </div>
                         </div>
-                        <!--  -->
-                        <div class="card-header">
-                            <i class="fas fa-table"></i>
-                            會員清單
-                            <div>
-                                共<?= $userCount ?>人
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div class="py-2 ms-2">
-                                <a href="/Eleganza/add-user.php" name="" class="btn btn-primary" role="button"><i class="fa-solid fa-user-plus fa-fw"></i></a>
-                            </div>
-
-                            <?php if (isset($_GET["search"])) : ?>
-                                <div class="py-2 me-2">
-                                    <a name="" id="" class="btn btn-primary" href="user-list.php" role="button"><i class="fa-solid fa-arrow-left fa-fw"></i></a>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <?php if (!isset($_GET["search"])) : ?>
-                            <div class="px-2 justify-content-end d-flex align-items-center">
-                                <form action="user-list.php" method="get" class="">
-                                    <input type="text" name="search" placeholder="Search
-                                    ">
-                                    <button type="submit" class="btn btn-secondary me-3">搜索</button>
-                                </form>
-                                <div class="me-2">排序</div>
-                                <div class="btn-group">
-                                    <a class="btn btn-primary" <?php if ($order == 1) echo "active" ?> href="user-list.php?order=1&p=<?= $p ?>">id<i class="fa-solid fa-arrow-down-1-9"></i></a>
-                                    <a class="btn btn-primary" <?php if ($order == 2) echo "active" ?> href="user-list.php?order=2&p=<?= $p ?>">id<i class="fa-solid fa-arrow-down-9-1"></i></a>
-                                    <a class="btn btn-primary" <?php if ($order == 3) echo "active" ?> href="user-list.php?order=3&p=<?= $p ?>">name<i class="fa-solid fa-arrow-down-a-z"></i></a>
-                                    <a class="btn btn-primary" <?php if ($order == 4) echo "active" ?> href="user-list.php?order=4&p=<?= $p ?>">name <i class="fa-solid fa-arrow-down-z-a"></i></a>
-                                </div>
-                            <?php endif; ?>
-                            </div>
-                            <div class="card-body">
-                                <?php if ($userCount > 0) : ?>
-                                    <?php if ($emptySearch) : ?>
-                                        <p>請查明後再輸入。</p>
-                                    <?php endif; ?>
-                                    <table id="" class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>id</th>
-                                                <th>姓名</th>
-                                                <th>帳號</th>
-                                                <th>電話</th>
-                                                <th>電子郵件</th>
-                                                <th>生日</th>
-                                                <th>詳細資訊</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- 等資料庫 -->
-                                            <!-- 參考上課users.php -->
-                                            <?php
-                                            foreach ($rows as $user) :
-                                            ?>
-                                                <tr>
-                                                    <td id="id"><?= $user["DisplayID"] ?></td>
-                                                    <td id="name"><?= $user["name"] ?></td>
-                                                    <td id="account"><?= $user["account"] ?></td>
-                                                    <td id="phone"><?= $user["phone"] ?></td>
-                                                    <td id="email"><?= $user["email"] ?></td>
-                                                    <td id="birth"><?= $user["birth"] ?></td>
-                                                    <td><a class="btn btn-primary" href="user.php?id=<?= $user["user_id"] ?>" role="button"><i class="fa-solid fa-circle-info fa-fw"></i></a>
-                                                        <button class="btn btn-danger" data-id="<?= $user["user_id"] ?>" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="fa-solid fa-trash fa-fw"></i></button>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                    <?php if (!isset($_GET["search"])) : ?>
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination">
-                                                <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
-                                                    <li class="page-item <?php if ($i == $p) echo "active"; ?>">
-                                                        <a class="page-link" href="user-list.php?order=<?= $order ?>&p=<?= $i ?>"><?= $i ?></a>
-                                                    </li>
-                                                <?php endfor; ?>
-                                            </ul>
-                                        </nav>
-                                    <?php endif; ?>
-                                <?php else : ?>
-                                    沒有使用者
-                                <?php endif; ?>
-                            </div>
                     </div>
+                    <!--  -->
+                    <div>
+                        共<?= $userCount ?>人
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <?php if (isset($_GET["search"])) : ?>
+                            <div class="py-2 me-2">
+                                <a name="" id="" class="btn btn-primary" href="user-list.php" role="button"><i class="fa-solid fa-arrow-left fa-fw"></i></a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <?php if (!isset($_GET["search"])) : ?>
+                        <div class="px-2 justify-content-end d-flex align-items-center">
+                            <form action="user-list.php" method="get" class="">
+                                <input type="text" name="search" placeholder="Search
+                                    ">
+                                <button type="submit" class="btn btn-secondary me-3">搜索</button>
+                            </form>
+                            <div class="me-2">排序</div>
+                            <div class="btn-group">
+                                <a class="btn" <?php if ($order == 1) echo "active" ?> href="user-list.php?order=1&p=<?= $p ?>"><i class="text-secondary fa-solid fa-arrow-down-1-9"></i></a>
+                                <a class="btn" <?php if ($order == 2) echo "active" ?> href="user-list.php?order=2&p=<?= $p ?>"><i class="text-secondary fa-solid fa-arrow-down-9-1"></i></a>
+                                <a class="btn" <?php if ($order == 3) echo "active" ?> href="user-list.php?order=3&p=<?= $p ?>"><i class="text-secondary fa-solid fa-arrow-down-a-z"></i></a>
+                                <a class="btn" <?php if ($order == 4) echo "active" ?> href="user-list.php?order=4&p=<?= $p ?>"><i class="text-secondary fa-solid fa-arrow-down-z-a"></i></a>
+                            </div>
+                        <?php endif; ?>
+                        </div>
+                        <div class="card-body">
+                            <?php if ($userCount > 0) : ?>
+                                <?php if ($emptySearch) : ?>
+                                    <p>請查明後再輸入。</p>
+                                <?php endif; ?>
+                                <table id="" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>姓名</th>
+                                            <th>帳號</th>
+                                            <th>電話</th>
+                                            <th>電子郵件</th>
+                                            <th>生日</th>
+                                            <th>詳細資訊</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 等資料庫 -->
+                                        <!-- 參考上課users.php -->
+                                        <?php
+                                        foreach ($rows as $user) :
+                                        ?>
+                                            <tr>
+                                                <td id="id"><?= $user["DisplayID"] ?></td>
+                                                <td id="name"><?= $user["name"] ?></td>
+                                                <td id="account"><?= $user["account"] ?></td>
+                                                <td id="phone"><?= $user["phone"] ?></td>
+                                                <td id="email"><?= $user["email"] ?></td>
+                                                <td id="birth"><?= $user["birth"] ?></td>
+                                                <td><a class="btn" href="user.php?id=<?= $user["user_id"] ?>" role="button"><i class="text-secondary fa-solid fa-circle-info fa-fw"></i></a>
+                                                    <button class="btn" data-id="<?= $user["user_id"] ?>" data-bs-toggle="modal" data-bs-target="#confirmModal"><i class="text-danger fa-solid fa-trash fa-fw"></i></button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <?php if (!isset($_GET["search"])) : ?>
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <?php for ($i = 1; $i <= $pageCount; $i++) : ?>
+                                                <li class="page-item <?php if ($i == $p) echo "active"; ?>">
+                                                    <a class="page-link" href="user-list.php?order=<?= $order ?>&p=<?= $i ?>"><?= $i ?></a>
+                                                </li>
+                                            <?php endfor; ?>
+                                        </ul>
+                                    </nav>
+                                <?php endif; ?>
+                            <?php else : ?>
+                                沒有使用者
+                            <?php endif; ?>
+                        </div>
                 </div>
             </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-center small">
+                        <div class="">Eleganza studio (阿爾扎工作室) &copy; Website 2024</div>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
     <?php include("../js/js.php") ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["user"]))
-    header("location: login.php");
+    header("location: ../login.php");
 
 require_once("../db_connect.php");
 
@@ -55,7 +55,7 @@ if (isset($_GET["reset"])) {
     <meta name="author" content="" />
     <title>Tables - SB Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
@@ -81,7 +81,7 @@ if (isset($_GET["reset"])) {
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="logout.php">登出</a></li>
+                    <li><a class="dropdown-item" href="../logout.php">登出</a></li>
                 </ul>
             </li>
         </ul>
@@ -104,7 +104,7 @@ if (isset($_GET["reset"])) {
                         </a>
                         <div class="collapse" id="users" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="users/user-list.php">會員資料</a>
+                                <a class="nav-link" href="../users/user-list.php">會員資料</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#products" aria-expanded="false" aria-controls="collapseLayouts">
@@ -114,7 +114,7 @@ if (isset($_GET["reset"])) {
                         </a>
                         <div class="collapse" id="products" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="products/product-list.php">產品管理</a>
+                                <a class="nav-link" href="../products/product-list.php">產品管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#courses" aria-expanded="false" aria-controls="courses">
@@ -124,8 +124,8 @@ if (isset($_GET["reset"])) {
                         </a>
                         <div class="collapse" id="courses" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="courses/course_list.php">課程列表</a>
-                                <a class="nav-link" href="courses/course_management.php">課程管理</a>
+                                <a class="nav-link" href="../courses/course_list.php">課程列表</a>
+                                <a class="nav-link" href="../courses/course_management.php">課程管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -135,7 +135,7 @@ if (isset($_GET["reset"])) {
                         </a>
                         <div class="collapse" id="discounts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="discounts/discounts.php">折扣管理</a>
+                                <a class="nav-link" href="../discounts/discounts.php">折扣管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#orders" aria-expanded="false" aria-controls="collapseLayouts">
@@ -145,7 +145,7 @@ if (isset($_GET["reset"])) {
                         </a>
                         <div class="collapse" id="orders" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="orders/orders.php">訂單管理</a>
+                                <a class="nav-link" href="../orders/orders.php">訂單管理</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#groups" aria-expanded="false" aria-controls="groups">
@@ -155,8 +155,8 @@ if (isset($_GET["reset"])) {
                         </a>
                         <div class="collapse" id="groups" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="groups/product_group.php">商品群組</a>
-                                <a class="nav-link" href="groups/course_group.php">課程群組</a>
+                                <a class="nav-link" href="../groups/product_group.php">商品群組</a>
+                                <a class="nav-link" href="../groups/course_group.php">課程群組</a>
                             </nav>
                         </div>
                     </div>
@@ -168,16 +168,9 @@ if (isset($_GET["reset"])) {
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">訂單</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">首頁</a></li>
                         <li class="breadcrumb-item active">訂單</li>
                     </ol>
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                            <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                            .
-                        </div>
-                    </div>
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-table me-1"></i>
@@ -260,7 +253,7 @@ if (isset($_GET["reset"])) {
                                     foreach ($rows as $user) :
                                     ?>
                                         <tr>
-                                            <td><a href="http://localhost/order/order_detail.php?order_id=<?= $user["order_id"] ?>"><?= $user["order_id"] ?></a></td>
+                                            <td><a href="order_detail.php?order_id=<?= $user["order_id"] ?>"><?= $user["order_id"] ?></a></td>
                                             <td><?= $user["user_id"] ?></td>
                                             <td><?= $user["product_type"] ?></td>
                                             <td><?= $user["status"] ?></td>
@@ -294,9 +287,9 @@ if (isset($_GET["reset"])) {
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
+    <script src="../js/datatables-simple-demo.js"></script>
 </body>
 
 </html>
