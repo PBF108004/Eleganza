@@ -142,7 +142,7 @@ $imgRows = $imgResult->fetch_all(MYSQLI_ASSOC);
                <li>
                   <hr class="dropdown-divider" />
                </li>
-               <li><a class="dropdown-item" href="logout.php">登出</a></li>
+               <li><a class="dropdown-item" href="../logout.php">登出</a></li>
             </ul>
          </li>
       </ul>
@@ -577,7 +577,7 @@ $imgRows = $imgResult->fetch_all(MYSQLI_ASSOC);
                                     <div class="col">
                                        <div class="w-50">
                                           <p id="priceText<?= $product["product_id"] ?>">
-                                             $<?= $product["price"] ?>
+                                             $<?= number_format($product["price"]) ?>
                                           </p>
                                           <input placeholder="Price" value="<?= $product["price"] ?>" type="text" class="form-control toggle-input" data-product-id="<?= $product["product_id"] ?>" name="priceEdit">
                                        </div>
