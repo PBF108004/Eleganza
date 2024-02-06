@@ -237,7 +237,7 @@ $styles = $result_style->fetch_all();
                                     <input type="text" class="form-control" name="name">
                                 </div>
                                 <div class="mb-2">
-                                    <label for="" class="form-label">課程圖片上傳</label>
+                                    <label for="" class="form-label">課程圖片上傳（必填）</label>
                                     <input type="file" class="form-control" name="course_images" id="imageInput" accept="image/*" onchange="previewImage()">
                                     <div id="imagePreview"></div>
                                 </div> 

@@ -301,7 +301,7 @@ $total_pages = ($total_records > 0) ? ceil($total_records / $recordsPerPage) : 1
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
         function confirmDelete(teacherId) {
-            window.location.replace("del_teacher.php?id=" + teacherId);
+            window.location.replace("softdel_teacher.php?id=" + teacherId);
             /* var confirmDelete = confirm("確定要刪除嗎？");
 
             if (confirmDelete) {

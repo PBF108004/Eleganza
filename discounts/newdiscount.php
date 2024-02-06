@@ -208,6 +208,7 @@ if (!isset($_SESSION["user"]))
                         <div>
                             <a href="discounts.php" class="mx-3 btn btn-secondary">取消</a>
                             <button type="button" id="send" class="btn btn-outline-primary">新增優惠券</button>
+                            <label for="" id="success"></label>
                         </div>
                     </div>
                 </div>
@@ -237,6 +238,7 @@ if (!isset($_SESSION["user"]))
         const random = document.querySelector("#random");
         const no = document.querySelector("#no"),
             number = document.querySelector("#number");
+        const success = document.querySelector("#success");
 
         send.addEventListener("click", function() {
             mainVal = main.value;
@@ -274,7 +276,12 @@ if (!isset($_SESSION["user"]))
                         alert(response.message);
                         return;
                     }
-                    alert("新增折扣" + mainVal + "成功!");
+                    if (response.status == 1) {
+                        // alert(response.message);
+                        alert("新增折扣" + mainVal + "成功!");
+                        window.location.replace("discounts.php");
+                    }
+
 
                 }).fail(function(jqXHR, textStatus) {
                     console.log("Request failed: " + textStatus);

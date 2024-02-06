@@ -159,6 +159,7 @@ try {
                         <div>
                             <h1 class="mt-4">類別管理</h1>
                         </div>
+                        <div><a href="newcategory.php" class="btn"><i class="fa-solid fa-plus text-secondary"></i></a></div>
 
                     </div>
                     <!-- <div id="accordionExample">
@@ -186,118 +187,122 @@ try {
                             </form>
                         </div>
                     </div> -->
-                </div>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item active">類別管理</li>
+                    </ol>
 
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            商品類別
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-12">
 
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
-                    <li class="breadcrumb-item active">類別管理</li>
-                </ol>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                商品類別
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-12">
+                                                    <div class="table-responsive">
+                                                        <table id="example" class="display" style="min-width: 845px">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>id</th>
+                                                                    <th>類別名稱</th>
+                                                                    <th>狀態</th>
+                                                                    <th>修改</th>
+                                                                    <th>刪除</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php foreach ($productrows as $productrow) : ?>
+                                                                    <tr>
+                                                                        <td><?= $productrow["product_category_id"] ?></td>
+                                                                        <td><?= $productrow["type"] ?></td>
+                                                                        <td class="text-danger"><?php if ($productrow["valid"] == 0) echo "下架" ?></td>
+                                                                        <td><a href="recategory.php?id=<?= $productrow["product_category_id"] ?>&cate=product" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
 
-                                        <div class="table-responsive">
-                                            <table id="example" class="display" style="min-width: 845px">
-                                                <thead>
-                                                    <tr>
-                                                        <th>id</th>
-                                                        <th>類別名稱</th>
-                                                        <th>狀態</th>
-                                                        <th>修改</th>
-                                                        <th>刪除</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($productrows as $productrow) : ?>
-                                                        <tr>
-                                                            <td><?= $productrow["product_category_id"] ?></td>
-                                                            <td><?= $productrow["type"] ?></td>
-                                                            <td class="text-danger"><?php if ($productrow["valid"] == 0) echo "下架" ?></td>
-                                                            <td><a href="recategory.php?id=<?= $productrow["product_category_id"] ?>&cate=product" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
+                                                                        <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $productrow["product_category_id"] ?>" data-category="product" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-danger"></i></button></td>
+                                                                    </tr>
+                                                                <?php endforeach; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            課程類別
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <div class="row">
+                                                <div class="col-12">
 
-                                                            <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $productrow["product_category_id"] ?>" data-category="product" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-danger"></i></button></td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
+                                                    <div class="table-responsive">
+                                                        <table id="example" class="display" style="min-width: 845px">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>id</th>
+                                                                    <th>類別名稱</th>
+                                                                    <th>狀態</th>
+                                                                    <th>修改</th>
+                                                                    <th>刪除</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php foreach ($courserows as $courserow) : ?>
+                                                                    <tr>
+                                                                        <td><?= $courserow["course_category_id"] ?></td>
+                                                                        <td><?= $courserow["level"] ?></td>
+                                                                        <td class="text-danger"><?php if ($courserow["valid"] == 0) echo "下架" ?></td>
+                                                                        <td><a href="recategory.php?id=<?= $courserow["course_category_id"] ?>&cate=course" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
+
+                                                                        <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $courserow["course_category_id"] ?>" data-category="course" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-danger"></i></button></td>
+                                                                    </tr>
+                                                                <?php endforeach; ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                課程類別
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-12">
 
-                                        <div class="table-responsive">
-                                            <table id="example" class="display" style="min-width: 845px">
-                                                <thead>
-                                                    <tr>
-                                                        <th>id</th>
-                                                        <th>類別名稱</th>
-                                                        <th>狀態</th>
-                                                        <th>修改</th>
-                                                        <th>刪除</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($courserows as $courserow) : ?>
-                                                        <tr>
-                                                            <td><?= $courserow["course_category_id"] ?></td>
-                                                            <td><input type="text" value="<?= $courserow["level"] ?>"></td>
-                                                            <td class="text-danger"><?php if ($courserow["valid"] == 0) echo "下架" ?></td>
-                                                            <td><a href="recategory.php?id=<?= $courserow["course_category_id"] ?>&cate=course" class="btn"><i class="fa-solid fa-pen text-secondary"></i></a></td>
-
-                                                            <td><button type="button" class="btn getid" data-bs-toggle="modal" data-id="<?= $courserow["course_category_id"] ?>" data-category="course" data-bs-target="#staticBackdrop"><i class="fa-solid fa-trash text-danger"></i></button></td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">刪除類別</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    是否刪除類別?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                    <button onclick="express()" class="btn btn-danger">確定</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">刪除類別</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                是否刪除類別?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                <button onclick="express()" class="btn btn-danger">確定</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </main>
         </div>
-        </main>
+
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-center small">

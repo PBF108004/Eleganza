@@ -23,7 +23,7 @@ if (isset($_FILES["teacher_img_upload"]) && $_FILES["teacher_img_upload"]["error
 }
 
 // 建立 SQL 語句
-$sql = "INSERT INTO `teacher` (`name`,`gender`,`phone`, `email`, `introduction`, `img`, `valid`) VALUES ('$name', '$gender', '$phone', '$email', '$introduction', '$img', 1)";
+$sql = "INSERT INTO `teacher`(`name`,`gender`,`phone`, `email`, `introduction`, `img`, `valid`) VALUES ('$name', '$gender', '$phone', '$email', '$introduction', '$img', 1)";
 
 // 執行 SQL 語句
 if ($conn->query($sql)) {

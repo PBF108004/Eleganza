@@ -251,20 +251,23 @@ if (isset($_GET["search"])) {
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+                <div class="d-flex justify-content-between align-items-center">
                     <h1 class="mt-4">課程列表</h1>
+                    <a class="btn" href="course-upload.php"><i class="text-dark fa-solid fa-plus"></i></a>
+                </div>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
                         <li class="breadcrumb-item active">課程列表</li>
                     </ol>
                     <div class="d-flex justify-content-between mb-3">
-                        <ul class="nav nav-pills">
+                        <!-- <ul class="nav nav-pills">
                             <?php foreach ($course_categories as $category) : ?>
                                 <li class="nav-item">
                                     <a class="nav-link mx-2 bg-dark text-white" href="course-list.php?category_id=<?= $category[0] ?>"><?= $category[1] ?></a>
                                 </li>
                             <?php endforeach; ?>
-                        </ul>
-                        <a class="btn btn-dark" href="course-upload.php">新增課程</a>
+                        </ul> -->
+                        
                     </div>
                     <div class="py-2">
                         <form action="">

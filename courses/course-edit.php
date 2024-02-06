@@ -5,15 +5,15 @@ if (!isset($_SESSION["user"]))
 
 require_once("../db_connect.php");
 
-if(!isset($_GET["id"])){
-    $id=0;
-}else{
-    $id=$_GET["id"];
+if (!isset($_GET["id"])) {
+    $id = 0;
+} else {
+    $id = $_GET["id"];
 }
 // var_dump($id);
 
-$sql="SELECT * FROM course WHERE course_id = $id";//把GET存到id裡去
-$result=$conn->query($sql);
+$sql = "SELECT * FROM course WHERE course_id = $id"; //把GET存到id裡去
+$result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
 ?>
@@ -49,60 +49,62 @@ $styles = $result_style->fetch_all();
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>編輯課程-Eleganza</title>
-        <link href="../css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-            <link rel="stylesheet" href="/resources/demos/style.css">
-            <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-            <script>
-            $(function() {
-                $("#start-datepicker").datepicker({
-                    dateFormat: 'yy-mm-dd'
-                });
-            });
-            </script>
-            <script>
-            $(function() {
-                $("#end-datepicker").datepicker({
-                    dateFormat: 'yy-mm-dd'
-                });
-            });
-        </script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/timePlugin.js"></script>
-        <?php include("../css/css.php") ?>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                flatpickr("#start-timePicker", {
-                    enableTime: true,
-                    noCalendar: true,
-                    dateFormat: "H:i",
-                });
 
-                flatpickr("#end-timePicker", {
-                    enableTime: true,
-                    noCalendar: true,
-                    dateFormat: "H:i",
-                });
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>編輯課程-Eleganza</title>
+    <link href="../css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#start-datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
             });
-        </script>
-        <style>
-            #imagePreview img {
-                max-width: 100%;
-                max-height: 500px; 
-            }
-        </style>
-    </head>
-    <body>
+        });
+    </script>
+    <script>
+        $(function() {
+            $("#end-datepicker").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/timePlugin.js"></script>
+    <?php include("../css/css.php") ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#start-timePicker", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+            });
+
+            flatpickr("#end-timePicker", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+            });
+        });
+    </script>
+    <style>
+        #imagePreview img {
+            max-width: 100%;
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="../index.php">Eleganza studio (阿爾扎工作室)</a>
@@ -213,14 +215,14 @@ $styles = $result_style->fetch_all();
                         </div>
                     </div>
                 </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">編輯課程</h1>
                     <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
+                        <li class="breadcrumb-item"><a class="nav-link link-primary" href="../index.php">總覽</a></li>
                         <li class="breadcrumb-item"><a class="text-decoration-none text-dark" href="course_list.php">課程列表</a></li>
                         <li class="breadcrumb-item active">編輯課程</li>
                     </ol>
@@ -230,76 +232,77 @@ $styles = $result_style->fetch_all();
                                 <a class="btn" href="course_list.php" role="button"><i class="text-dark fa-solid fa-chevron-left"></i></a>
                             </div>
                             <div class="mb-2">
-                                <input type="hidden" name="course_id" value=<?= $row["course_id"]?>>
-                            </div> 
+                                <input type="hidden" name="course_id" value=<?= $row["course_id"] ?>>
+                            </div>
                             <div class="mb-2">
                                 <label for="" class="form-label">課程名稱</label>
-                                <input type="text" class="form-control" name="name" value="<?= $row["name"]?>">
+                                <input type="text" class="form-control" name="name" value="<?= $row["name"] ?>">
                             </div>
                             <div class="mb-2">
                                 <label for="" class="form-label">課程圖片</label>
                                 <img class="mb-3" style="max-height: 300px;" name="original_img" src="../images/course_images/<?= $row["img"] ?>" alt="課程圖片">
                                 <input type="file" class="form-control" name="course_images" id="imageInput" accept="image/*" onchange="previewImage()">
-                                    <div id="imagePreview"></div>
+                                <div id="imagePreview"></div>
                             </div>
                             <select class="form-select mt-3" name="course_category_level" aria-label="Default select example">
                                 <option disabled hidden>課程類别</option>
                                 <?php foreach ($course_categories as $category) : ?>
-                                    <option name="course_category_level" value="<?= $category[0] ?>" <?php if($row["course_category_id"] == $category[0]) echo "selected"; ?>><?= $category[1] ?></option>
+                                    <option name="course_category_level" value="<?= $category[0] ?>" <?php if ($row["course_category_id"] == $category[0]) echo "selected"; ?>><?= $category[1] ?></option>
                                 <?php endforeach; ?>
                             </select>
 
                             <select class="form-select mt-3" name="course_teacher_name" aria-label="Default select example">
                                 <option disabled hidden>授課老師</option>
                                 <?php foreach ($teachers as $teacher) : ?>
-                                    <option name="course_teacher_name" value="<?= $teacher[0] ?>" <?php if($row["teacher_id"] == $teacher[0]) echo "selected"; ?>><?= $teacher[1] ?></option>
+                                    <option name="course_teacher_name" value="<?= $teacher[0] ?>" <?php if ($row["teacher_id"] == $teacher[0]) echo "selected"; ?>><?= $teacher[1] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <select class="form-select mt-3" name="style" aria-label="Default select example">
                                 <option disabled hidden>課程音樂風格</option>
                                 <?php foreach ($styles as $style) : ?>
-                                    <option name="style" value="<?= $style[0] ?>" <?php if($row["style_id"] == $style[0]) echo "selected"; ?>><?= $style[1] ?></option>
+                                    <option name="style" value="<?= $style[0] ?>" <?php if ($row["style_id"] == $style[0]) echo "selected"; ?>><?= $style[1] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="mb-2 mt-3">
                                 <label for="" class="form-label">學費</label>
-                                <input type="text" class="form-control" name="price" value="<?= ($row["price"])?>">
+                                <input type="text" class="form-control" name="price" value="<?= ($row["price"]) ?>">
                             </div>
                             <div class="mb-2">
                                 <label for="" class="form-label">限額</label>
-                                <input type="text" class="form-control" name="quota" value="<?= $row["quota"]?>">
+                                <input type="text" class="form-control" name="quota" value="<?= $row["quota"] ?>">
                             </div>
                             <div class="inputgroup my-3 d-flex jutify-center-start">
                                 <div>上下架選擇：</div>
                                 <input class="mx-2" type="radio" name="valid" value="1" <?php echo ($row["valid"] == 1) ? "checked" : ""; ?>> 上架
-                                </div>
                             </div>
                             <p class="fs-5 mt-3">個別課不需選擇課程日期、時間，自行與教師商議</ㄣ>
-                            <p>課程開始日期 <input class="mt-3 mx-2" type="text" id="start-datepicker" name="start_date" value="<?= $row["start_date"]?>"></p>
-                            <p>課程結束日期 <input class="mt-1 mx-2" type="text" id="end-datepicker" name="end_date" value="<?= $row["end_date"]?>"></p>
-                            <p>上課開始時間 <input class="mx-2" type="text" id="start-timePicker" name="start_time" placeholder="選擇時間" value="<?= $row["start_time"]?>"></p>
-                            <p>上課結束時間 <input class="mx-2" type="text" id="end-timePicker" name="end_time" placeholder="選擇結束時間" value="<?= $row["end_time"]?>"></p>
+                            <p>課程開始日期 <input class="mt-3 mx-2" type="text" id="start-datepicker" name="start_date" value="<?= $row["start_date"] ?>"></p>
+                            <p>課程結束日期 <input class="mt-1 mx-2" type="text" id="end-datepicker" name="end_date" value="<?= $row["end_date"] ?>"></p>
+                            <p>上課開始時間 <input class="mx-2" type="text" id="start-timePicker" name="start_time" placeholder="選擇時間" value="<?= $row["start_time"] ?>"></p>
+                            <p>上課結束時間 <input class="mx-2" type="text" id="end-timePicker" name="end_time" placeholder="選擇結束時間" value="<?= $row["end_time"] ?>"></p>
                             <div class="mb-3">
                                 <label for="courseAddIntro" class="form-label mt-3">描述</label>
-                                <textarea class="form-control" id="courseAddIntro" rows="3" name="des"><?= $row["description"]?></textarea>
+                                <textarea class="form-control" id="courseAddIntro" rows="3" name="des"><?= $row["description"] ?></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="courseAddIntro" class="form-label mt-3">備註</label>
-                                <textarea class="form-control" id="courseAddIntro" rows="3" name="comment"><?= $row["comment"]?></textarea>
+                                <textarea class="form-control" id="courseAddIntro" rows="3" name="comment"><?= $row["comment"] ?></textarea>
                             </div>
-                            
+
                             <button class="btn btn-dark mb-3" type="submit">完成編輯</button>
                         </form>
                     </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-center small">
-                        <div class="">Eleganza studio (阿爾扎工作室) &copy; Website 2024</div>
-                    </div>
                 </div>
-            </footer>
+            </main>
         </div>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-center small">
+                    <div class="">Eleganza studio (阿爾扎工作室) &copy; Website 2024</div>
+                </div>
+            </div>
+        </footer>
+    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="../js/scripts.js"></script>
@@ -317,26 +320,26 @@ $styles = $result_style->fetch_all();
      </script> -->
     <!-- 選擇新圖片時的預覽函數 -->
     <script>
-    function previewImage() {
-        var input = document.getElementById('imageInput');
-        var preview = document.getElementById('imagePreview');
+        function previewImage() {
+            var input = document.getElementById('imageInput');
+            var preview = document.getElementById('imagePreview');
 
-        while (preview.firstChild) {
-            preview.removeChild(preview.firstChild);
-        }
-
-        if (input.files && input.files.length > 0) {
-            var reader = new FileReader();
-            var img = document.createElement('img');
-
-            reader.onload = function (e) {
-                img.src = e.target.result;
+            while (preview.firstChild) {
+                preview.removeChild(preview.firstChild);
             }
 
-            reader.readAsDataURL(input.files[0]);
-            preview.appendChild(img);
+            if (input.files && input.files.length > 0) {
+                var reader = new FileReader();
+                var img = document.createElement('img');
+
+                reader.onload = function(e) {
+                    img.src = e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+                preview.appendChild(img);
+            }
         }
-    }
     </script>
 </body>
 

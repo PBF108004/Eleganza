@@ -97,7 +97,7 @@ if (!isset($_SESSION["user"]))
                                 <a class="nav-link" href="courses/course_list.php">課程列表</a>
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false" aria-controls="groups">
+                        <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false" aria-controls="groups">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             類別
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -106,7 +106,7 @@ if (!isset($_SESSION["user"]))
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="categorys/category-list.php">類別管理</a>
                             </nav>
-                        </div>
+                        </div> -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#discounts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             折扣
@@ -154,7 +154,7 @@ if (!isset($_SESSION["user"]))
                             <div class="col">
                                 <div class="card card-bg my-5 px-3 py-3" style="width: 15rem;">
                                     <figure class="card-img-top circle">
-                                        <img src="images/five/yuyi.jpg" alt="...">
+                                        <img src="images/five/yunting.png" alt="...">
                                     </figure>
                                     <div class="card-body">
                                         <p class="p-name card-text text-center">羅筠庭</p>
@@ -164,7 +164,7 @@ if (!isset($_SESSION["user"]))
                             <div class="col">
                                 <div class="card card-bg my-5 px-3 py-3" style="width: 15rem;">
                                     <figure class="card-img-top circle">
-                                        <img src="images/five/yuyi.jpg" alt="...">
+                                        <img src="images/five/xuan.jpg" alt="...">
                                     </figure>
                                     <div class="card-body">
                                         <p class="p-name card-text text-center">吳容軒</p>
@@ -184,7 +184,7 @@ if (!isset($_SESSION["user"]))
                             <div class="col">
                                 <div class="card card-bg my-5 px-3 py-3" style="width: 15rem;">
                                     <figure class="card-img-top circle">
-                                        <img src="images/five/yuyi.jpg" alt="...">
+                                        <img src="images/five/yi.jpg" alt="...">
                                     </figure>
                                     <div class="card-body">
                                         <p class="p-name card-text text-center">林衣心</p>
@@ -194,7 +194,7 @@ if (!isset($_SESSION["user"]))
                             <div class="col">
                                 <div class="card card-bg my-5 px-3 py-3" style="width: 15rem;">
                                     <figure class="card-img-top circle">
-                                        <img src="images/five/yuyi.jpg" alt="...">
+                                        <img src="images/five/jing.jpg" alt="...">
                                     </figure>
                                     <div class="card-body">
                                         <p class="p-name card-text text-center">林靜</p>

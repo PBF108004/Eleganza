@@ -25,7 +25,7 @@
         echo json_encode($data);
         exit;
     }
-    if($restriction )
+
 
     $start = $start_date. " ". $start_time.":00";
     $end = $end_date. " ". $end_time.":00";
@@ -36,6 +36,12 @@
 
     try {
         $stmt->execute();
+        $data = [
+            "status" => 1,
+            "message" => "新增成功"
+        ];
+        echo json_encode($data);
+        exit;
     } catch (PDOException $e) {
         echo "預處理陳述式失敗<br>";
         echo "Error: " . $e->getMessage();
@@ -43,4 +49,4 @@
         exit;
     }
 
-    header("location: ./discounts.php");
+    // header("location: ./discounts.php");
