@@ -32,6 +32,8 @@ if (isset($_GET["search"])) {
 
    $delete = $_GET["delete"];
    $whereClause = "WHERE valid=0";
+} else {
+   $whereClause = "WHERE valid=1";
 }
 
 //product
@@ -71,6 +73,7 @@ $imgRows = $imgResult->fetch_all(MYSQLI_ASSOC);
    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <?php include("../css/css.php") ?>
 
    <style>
       .img {
@@ -122,7 +125,7 @@ $imgRows = $imgResult->fetch_all(MYSQLI_ASSOC);
       <!-- Navbar Brand-->
       <a class="navbar-brand ps-3" href="../index.php">Eleganza studio (阿爾扎工作室)</a>
       <!-- Sidebar Toggle-->
-      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+      <button class="hidden btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
       <!-- Navbar Search-->
       <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
          <div class="input-group">
@@ -239,7 +242,7 @@ $imgRows = $imgResult->fetch_all(MYSQLI_ASSOC);
                   <div>
                      <h1 class="mb-2">PRODUCT LIST</h1>
                      <div class="d-flex align-content-center align-items-center">
-                        <?php if (isset($_GET["search"]) || isset($_GET["brand"]) || isset($_GET["category"]) || isset($_GET["On shelf"]) || isset($_GET["Off shelf"])) : ?>
+                        <?php if (isset($_GET["search"]) || isset($_GET["brand"]) || isset($_GET["category"]) || isset($_GET["onShelf"]) || isset($_GET["OffShelf"]) || isset($_GET["delete"])) : ?>
                            <div class="py-2">
                               <a name="" id="" class="btn btn-outline" href="./product-list.php" role="button"><i class="fa-solid fa-arrow-left fa-fw"></i></a>
                            </div>

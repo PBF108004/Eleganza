@@ -1,10 +1,24 @@
 <style>
     .loginbodybg {
-        background: url("./imagesbg/loginbackground.png") center center /cover;
+        background: url("./images/background/loginbackground.png") center center /cover;
     }
 
     a {
         text-wrap: nowrap;
+    }
+
+    @media (min-width: 1400px) {
+        .hidden {
+            display: none;
+        }
+    }
+
+    .indexbg {
+        background: url("./images/background/index.jpg") center center /cover;
+
+        .dark {
+            background: #00000099;
+        }
     }
 
     .table-width {
@@ -18,29 +32,61 @@
         }
     }
 
-    .object-fit-cover{
-            width:100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .cart-icon{
-            font-size: 1.8rem;
-        }
-        .cart-count{
-            font-size: 12px;
-            width: 20px;
-            height: 20px;
+
+    .card-bg {
+        box-shadow: 0 3px 5px #666;
+        background: #ffffff77;
+
+        .circle {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            top: -5px;
-            right: -10px;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
+            margin: 0 auto;
+
+            & img {
+                width: 100%;
+                align-items: center;
+            }
         }
-        .product-img{
-            --width:84px;
-            width: var(--width);
-            height: var(--width);
-        }
+    }
+
+    .card-bg:hover {
+        box-shadow: 0 5px 10px #ffd180;
+    }
+
+    .p-name {
+        font-size: 25px;
+        font-weight: 900;
+    }
+
+
+    .object-fit-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cart-icon {
+        font-size: 1.8rem;
+    }
+
+    .cart-count {
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        top: -5px;
+        right: -10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-img {
+        --width: 84px;
+        width: var(--width);
+        height: var(--width);
+    }
 
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
