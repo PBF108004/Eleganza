@@ -18,7 +18,14 @@ $status = trim($_POST["statusEdit"]);
 
 
 
-$sql = "UPDATE product SET `name`='$name', price='$price', num='$num', introduction='$intro', brand='$brand', size='$size', top='$top', back_and_sides='$bas', neck='$neck', fingerboard='$finger', bow='$bow', status='$status' WHERE product_id=$id";
+if ("$num" != 0) {
+   
+   $sql = "UPDATE product SET `name`='$name', price='$price', num='$num', introduction='$intro', brand='$brand', size='$size', top='$top', back_and_sides='$bas', neck='$neck', fingerboard='$finger', bow='$bow', status='$status' WHERE product_id=$id";
+   
+}else{
+
+   $sql = "UPDATE product SET `name`='$name', price='$price', num='$num', introduction='$intro', brand='$brand', size='$size', top='$top', back_and_sides='$bas', neck='$neck', fingerboard='$finger', bow='$bow', status=2 WHERE product_id=$id";
+}
 
 
 

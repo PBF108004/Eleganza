@@ -542,9 +542,9 @@ $imgRows = $imgResult->fetch_all(MYSQLI_ASSOC);
                <?php foreach ($rows as $product) : ?>
 
 
-                  <?php if ($product["num"] == 0) {
+                  <?php /* if ($product["num"] == 0) {
                      $product["p_status"] == 2;
-                  }
+                  } */
 
 
                   ?>
